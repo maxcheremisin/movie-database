@@ -1,0 +1,73 @@
+.header__logo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 90px;
+  width: 100%;
+  font-size: 2.4em;
+  font-family: "Josefin Sans", sans-serif;
+  color: @minorColor;
+  font-weight: 900;
+  user-select: none;
+}
+
+.header__image {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  fill: currentColor;
+}
+
+.header__text {
+  margin: 0 40px;
+}
+
+.menu__nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 55px;
+  width: 100%;
+}
+
+.menu__container {
+  background-color: @mainColor;
+  border-bottom: 4px solid @secondColor;
+}
+
+.menu__item {
+  position: relative;
+  text-align: center;
+  line-height: 55px;
+  height: 55px;
+  width: 120px;
+  color: white;
+  font-family: PT Sans Narrow, sans-serif;
+  font-size: 1.1em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: @secondColor;
+
+    &:after {
+      border-top: 10px solid @secondColor;
+    }
+  }
+}
+
+.menu__item--checked::before,
+.menu__item--checked::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 10px);
+  bottom: -25px;
+  border: 13px solid transparent;
+  border-top: 10px solid @secondColor;
+}
+
+.menu__item--checked::after {
+    border-top: 10px solid @mainColor;
+    bottom: -20px;
+  }

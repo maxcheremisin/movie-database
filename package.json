@@ -1,0 +1,25 @@
+{
+  "name": "raccoon",
+  "version": "1.0.0",
+  "description": "blog layout",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build-css": "lessc styles/less/style.less styles/css/style.css --autoprefix=\"last 2 versions\"",
+    "less-watch": "less-watch-compiler styles/less styles/css style.less"
+  },
+  "dependencies": {
+    "less": "^2.7.2",
+    "less-plugin-autoprefix": "^1.5.1"
+  },
+  "author": "Maxim Cheremisin",
+  "license": "ISC",
+  "devDependencies": {
+    "less-watch-compiler": "^1.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Maxim_Cheremisin@git.epam.com/Maxim_Cheremisin/cheremisin_maxim-2017.git"
+  }
+}

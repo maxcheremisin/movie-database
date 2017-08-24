@@ -1,0 +1,45 @@
+.tags-list {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 255px;
+}
+
+.tag {
+  position: relative;
+  height: 18px;
+  line-height: 18px;
+  background-color: #6794b7;
+  font-size: 0.8em;
+  color: white;
+  font-family: sans-serif;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 5px;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    content: '';
+    padding-left: 5px;
+    right: -23px;
+    border: 9px solid transparent;
+    border-left: 9px solid #6794b7;
+  }
+
+  &:before {
+    position: absolute;
+    content: '\25CF';
+    right: -2px;
+    z-index: 10;
+  }
+
+  &:hover {
+    background-color: #c6defa;
+
+    &:after {
+      border-left: 9px solid #c6defa;
+    }
+  }
+}
