@@ -2,7 +2,7 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 let checkMimeType = true;
-let port = process.env.npm_package_config_port || 80;
+let port = process.env.npm_package_config_port || 8080;
 
 http.createServer(function (req, res) {
     let filename = req.url || "index.html";
