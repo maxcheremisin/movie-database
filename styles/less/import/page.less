@@ -1,0 +1,30 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.page {
+  margin: 0;
+  padding: 0;
+
+  &__content {
+    width: @pageWidth;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header {
+    margin-bottom: 49px;
+  }
+
+  &__sidebar {
+    width: @sidebarWidth;
+  }
+
+  &__loader {
+    width: @contentWidth;
+    height: 200px;
+  }
+}
