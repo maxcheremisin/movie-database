@@ -10,25 +10,26 @@
   &__caption {
     position: relative;
     bottom: 5px;
-    font-family: "PT Sans Narrow", sans-serif;
-    font-weight: 900;
-    font-size: 1.2em;
+    left: -5px;
+    font-family: "Trend Sans One", sans-serif;
+    font-size: 1.12em;
     color: @minorColor;
 
     &--about::before {
       content: '?';
       position: relative;
-      right: 22px;
+      right: 19px;
       top: 2px;
-      font-size: 1.1em;
+      font-size: 1.13em;
       color: white;
     }
 
     &--information::before {
       content: '!';
       position: relative;
-      right: 21px;
-      top: 1px;
+      right: 17px;
+      top: 2px;
+      font-size: 1.13em;
       color: white;
     }
   }
@@ -37,17 +38,18 @@
     display: inline-block;
     border-bottom: 5px solid @minorColor;
     width: 100%;
-    margin-bottom: 13px;
+    margin-bottom: 14px;
     line-height: 0;
+    white-space: nowrap;
   }
 
   &__text {
-    font-family: "Josefin Sans", sans-serif;
+    font-family: Arial, sans-serif;
     font-weight: 500;
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-align: justify;
     color: @fontColor;
     line-height: 18px;
-    margin-bottom: 32px;
+    margin-bottom: 31px;
   }
 }
