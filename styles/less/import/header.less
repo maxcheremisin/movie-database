@@ -1,0 +1,83 @@
+.logo {
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: @logoHeight;
+    width: 100%;
+    font-size: 2.3em;
+    font-family: "Josefin Sans", sans-serif;
+    color: @minorColor;
+    font-weight: 900;
+    letter-spacing: 7px;
+    user-select: none;
+  }
+
+  &__icon {
+    height: 56px;
+    width: 56px;
+    margin-left: 2px;
+    fill: currentColor;
+  }
+
+  &__text {
+    width: 162px;
+    margin-bottom: 4px;
+    text-align: right;
+
+    &--right {
+      letter-spacing: 5px;
+    }
+  }
+}
+
+.menu {
+  background-color: @mainColor;
+  border-bottom: 4px solid @secondColor;
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: @menuHeight;
+    width: 100%;
+  }
+
+  &__item {
+    position: relative;
+    text-align: center;
+    line-height: calc(@menuHeight + 3px);
+    height: @menuHeight;
+    width: 120px;
+    color: white;
+    font-family: "Josefin Sans", sans-serif;
+    cursor: pointer;
+    user-select: none;
+
+    &--checked {
+      &:after, &:before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 8px);
+        bottom: -25px;
+        border: 13px solid transparent;
+        border-top: 10px solid @secondColor;
+      }
+
+      &:after {
+        border-top: 10px solid @mainColor;
+        bottom: -20px;
+      }
+    }
+
+    &:hover {
+      background-color: @secondColor;
+
+      &:after {
+        border-top: 10px solid @secondColor;
+      }
+    }
+  }
+}
