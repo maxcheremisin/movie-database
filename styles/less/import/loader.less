@@ -1,7 +1,3 @@
-.loader-container {
-  position: absolute;
-}
-
 .loader {
   position: relative;
   margin: 0 auto;
@@ -14,7 +10,7 @@
   &__circle {
     position: absolute;
     top: @loaderThickness;
-    left: calc(@contentWidth / 2 - @loaderHoleSize / 2);
+    left: @loaderThickness;
     width: @loaderHoleSize;
     height: @loaderHoleSize;
     border-radius: 100%;

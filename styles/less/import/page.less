@@ -13,18 +13,38 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      width: auto;
+    }
   }
 
   &__header {
     min-width: @pageWidth;
     margin-bottom: 49px;
+    z-index: 999;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      min-width: @contentWidth;
+      margin-bottom: 33px;
+    }
   }
 
   &__sidebar {
     width: @sidebarWidth;
+    overflow: hidden;
+
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      width: @contentWidth;
+      margin: 0 auto;
+    }
   }
 
   &__loader {
+    margin: 0 auto;
     width: @contentWidth;
     height: 100px;
   }

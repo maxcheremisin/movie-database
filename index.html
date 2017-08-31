@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+    <script language="JavaScript" type="text/javascript" src="script.js" defer></script>
     <title>Title</title>
 </head>
 <body class="page">
@@ -26,139 +27,168 @@
             <li class="menu__item">HTML</li>
             <li class="menu__item">DESIGN</li>
         </ul>
+        <div class="menu__article-buttons">
+
+            <label class="menu__button radio-button radio-button--about">
+                <input class="radio-button__input radio-button__input--about"
+                       type="radio"
+                       name="menu-button"
+                       value="about">
+                <div class="radio-button__caption radio-button__caption--about">
+                    ABOUT
+                </div>
+                <div class="radio-button__icon radio-button__icon--about">?</div>
+            </label>
+
+            <label class="menu__button radio-button radio-button--information">
+                <input class="radio-button__input radio-button__input--information"
+                       type="radio"
+                       name="menu-button"
+                       value="information">
+                <div class="radio-button__caption radio-button__caption--information">
+                    INFORMATION
+                </div>
+                <div class="radio-button__icon radio-button__icon--information">!</div>
+            </label>
+
+        </div>
     </div>
 </header>
 
 <div class="content page__content">
     <main class="main-content">
         <div class="blog-post">
-            <img src="images/blogoflowers.png" class="blog-post__banner">
-            <h1 class="blog-post__header">
-                Blogotitle of blogopost about blogoflowers
-            </h1>
-            <div class="blog-post__info">
-                <div class="blog-post__post-data">
-                    <div class="blog-post__date">
-                        <svg class="blog-post__data-icon blog-post__data-icon--date">
-                            <use xlink:href="icons/sprite.svg#icon-clock"></use>
-                        </svg>
-                        22:58 Jan 01, 2014
+            <div class="blog-post__container">
+                <img src="images/blogoflowers.png" class="blog-post__banner">
+                <h1 class="blog-post__header">
+                    Blogotitle of blogopost about blogoflowers
+                </h1>
+                <div class="blog-post__info">
+                    <div class="blog-post__post-data">
+                        <div class="blog-post__date">
+                            <svg class="blog-post__data-icon blog-post__data-icon--date">
+                                <use xlink:href="icons/sprite.svg#icon-clock"></use>
+                            </svg>
+                            22:58 Jan 01, 2014
+                        </div>
+                        <div class="blog-post__author">
+                            <svg class="blog-post__data-icon blog-post__data-icon--author">
+                                <use xlink:href="icons/sprite.svg#icon-footstep"></use>
+                            </svg>
+                            by E. Hyperraccoon
+                        </div>
                     </div>
-                    <div class="blog-post__author">
-                        <svg class="blog-post__data-icon blog-post__data-icon--author">
-                            <use xlink:href="icons/sprite.svg#icon-footstep"></use>
-                        </svg>
-                        by E. Hyperraccoon
-                    </div>
+                    <ul class="share-menu list">
+                        <li class="share-menu__button share-menu__button--facebook">
+                            <svg class="share-menu__icon share-menu__icon--facebook">
+                                <use xlink:href="icons/sprite.svg#icon-facebook"></use>
+                            </svg>
+                            <div class="share-menu__count">16</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--gplus">
+                            <svg class="share-menu__icon share-menu__icon--gplus">
+                                <use xlink:href="icons/sprite.svg#icon-gplus"></use>
+                            </svg>
+                            <div class="share-menu__count">7</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--twitter">
+                            <svg class="share-menu__icon share-menu__icon--twitter">
+                                <use xlink:href="icons/sprite.svg#icon-twitter"></use>
+                            </svg>
+                            <div class="share-menu__count">15</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--vk">
+                            <svg class="share-menu__icon share-menu__icon--vk">
+                                <use xlink:href="icons/sprite.svg#icon-vk"></use>
+                            </svg>
+                            <div class="share-menu__count">16</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--yaru">
+                            <svg class="share-menu__icon share-menu__icon--yaru">
+                                <use xlink:href="icons/sprite.svg#icon-yaru"></use>
+                            </svg>
+                            <div class="share-menu__count">1</div>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="share-menu list">
-                    <li class="share-menu__button share-menu__button--facebook">
-                        <svg class="share-menu__icon share-menu__icon--facebook">
-                            <use xlink:href="icons/sprite.svg#icon-facebook"></use>
-                        </svg>
-                        <div class="share-menu__count">16</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--google">
-                        <svg class="share-menu__icon share-menu__icon--gplus">
-                            <use xlink:href="icons/sprite.svg#icon-gplus"></use>
-                        </svg>
-                        <div class="share-menu__count">7</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--twitter">
-                        <svg class="share-menu__icon share-menu__icon--twitter">
-                            <use xlink:href="icons/sprite.svg#icon-twitter"></use>
-                        </svg>
-                        <div class="share-menu__count">15</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--vk">
-                        <svg class="share-menu__icon share-menu__icon--vk">
-                            <use xlink:href="icons/sprite.svg#icon-vk"></use>
-                        </svg>
-                        <div class="share-menu__count">16</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--yaru">
-                        <svg class="share-menu__icon share-menu__icon--yaru">
-                            <use xlink:href="icons/sprite.svg#icon-yaru"></use>
-                        </svg>
-                        <div class="share-menu__count">1</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="blog-post__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium, asperiores aut cupiditate,
-                deserunt eaque eligendi eos, facere facilis in incidunt laudantium necessitatibus nesciunt nulla
-                quae quas unde veritatis vero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet
-                asperiores assumenda aut, ea, explicabo facere, fugit maiores maxime provident quas quidem quo
-                reiciendis sit soluta sunt tempore vero voluptate.
+                <div class="blog-post__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium, asperiores aut cupiditate,
+                    deserunt eaque eligendi eos, facere facilis in incidunt laudantium necessitatibus nesciunt nulla
+                    quae quas unde veritatis vero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet
+                    asperiores assumenda aut, ea, explicabo facere, fugit maiores maxime provident quas quidem quo
+                    reiciendis sit soluta sunt tempore vero voluptate.
+                </div>
             </div>
         </div>
         <div class="blog-post">
-            <img src="images/colorful.png" class="blog-post__banner">
-            <h1 class="blog-post__header">
-                Blogotitle about colorful
-            </h1>
-            <div class="blog-post__info">
-                <div class="blog-post__post-data">
-                    <div class="blog-post__date">
-                        <svg class="blog-post__data-icon blog-post__data-icon--date">
-                            <use xlink:href="icons/sprite.svg#icon-clock"></use>
-                        </svg>
-                        22:50 Jan 01, 2014
+            <div class="blog-post__container">
+                <img src="images/colorful.png" class="blog-post__banner">
+                <h1 class="blog-post__header">
+                    Blogotitle about colorful
+                </h1>
+                <div class="blog-post__info">
+                    <div class="blog-post__post-data">
+                        <div class="blog-post__date">
+                            <svg class="blog-post__data-icon blog-post__data-icon--date">
+                                <use xlink:href="icons/sprite.svg#icon-clock"></use>
+                            </svg>
+                            22:50 Jan 01, 2014
+                        </div>
+                        <div class="blog-post__author">
+                            <svg class="blog-post__data-icon blog-post__data-icon--author">
+                                <use xlink:href="icons/sprite.svg#icon-footstep"></use>
+                            </svg>
+                            by E. Hyperraccoon
+                        </div>
                     </div>
-                    <div class="blog-post__author">
-                        <svg class="blog-post__data-icon blog-post__data-icon--author">
-                            <use xlink:href="icons/sprite.svg#icon-footstep"></use>
-                        </svg>
-                        by E. Hyperraccoon
-                    </div>
+                    <ul class="share-menu list">
+                        <li class="share-menu__button share-menu__button--facebook">
+                            <svg class="share-menu__icon share-menu__icon--facebook">
+                                <use xlink:href="icons/sprite.svg#icon-facebook"></use>
+                            </svg>
+                            <div class="share-menu__count">16</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--gplus">
+                            <svg class="share-menu__icon share-menu__icon--gplus">
+                                <use xlink:href="icons/sprite.svg#icon-gplus"></use>
+                            </svg>
+                            <div class="share-menu__count">7</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--twitter">
+                            <svg class="share-menu__icon share-menu__icon--twitter">
+                                <use xlink:href="icons/sprite.svg#icon-twitter"></use>
+                            </svg>
+                            <div class="share-menu__count">15</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--vk">
+                            <svg class="share-menu__icon share-menu__icon--vk">
+                                <use xlink:href="icons/sprite.svg#icon-vk"></use>
+                            </svg>
+                            <div class="share-menu__count">16</div>
+                        </li>
+                        <li class="share-menu__button share-menu__button--yaru">
+                            <svg class="share-menu__icon share-menu__icon--yaru">
+                                <use xlink:href="icons/sprite.svg#icon-yaru"></use>
+                            </svg>
+                            <div class="share-menu__count">1</div>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="share-menu list">
-                    <li class="share-menu__button share-menu__button--facebook">
-                        <svg class="share-menu__icon share-menu__icon--facebook">
-                            <use xlink:href="icons/sprite.svg#icon-facebook"></use>
-                        </svg>
-                        <div class="share-menu__count">16</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--google">
-                        <svg class="share-menu__icon share-menu__icon--gplus">
-                            <use xlink:href="icons/sprite.svg#icon-gplus"></use>
-                        </svg>
-                        <div class="share-menu__count">7</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--twitter">
-                        <svg class="share-menu__icon share-menu__icon--twitter">
-                            <use xlink:href="icons/sprite.svg#icon-twitter"></use>
-                        </svg>
-                        <div class="share-menu__count">15</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--vk">
-                        <svg class="share-menu__icon share-menu__icon--vk">
-                            <use xlink:href="icons/sprite.svg#icon-vk"></use>
-                        </svg>
-                        <div class="share-menu__count">16</div>
-                    </li>
-                    <li class="share-menu__button share-menu__button--yaru">
-                        <svg class="share-menu__icon share-menu__icon--yaru">
-                            <use xlink:href="icons/sprite.svg#icon-yaru"></use>
-                        </svg>
-                        <div class="share-menu__count">1</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="blog-post__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium, asperiores aut cupiditate,
-                deserunt eaque eligendi eos, facere facilis in incidunt laudantium necessitatibus nesciunt nulla
-                quae quas unde veritatis vero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet
-                asperiores assumenda aut, ea, explicabo facere, fugit maiores maxime provident quas quidem quo
-                reiciendis sit soluta sunt tempore vero voluptate.
+                <div class="blog-post__text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium, asperiores aut cupiditate,
+                    deserunt eaque eligendi eos, facere facilis in incidunt laudantium necessitatibus nesciunt nulla
+                    quae quas unde veritatis vero? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet
+                    asperiores assumenda aut, ea, explicabo facere, fugit maiores maxime provident quas quidem quo
+                    reiciendis sit soluta sunt tempore vero voluptate.
+                </div>
             </div>
         </div>
         <div class="loader-container page__loader">
             <div class="loader">
                 <div class="loader__spinner loader__spinner--left"></div>
                 <div class="loader__spinner loader__spinner--right"></div>
+                <div class="loader__circle"></div>
             </div>
-            <div class="loader__circle"></div>
         </div>
     </main>
 
@@ -202,6 +232,9 @@
             <li class="tag-cloud__tag">Dog</li>
             <li class="tag-cloud__tag">Cat</li>
             <li class="tag-cloud__tag">Developer</li>
+            <li class="tag-cloud__tag">Cat</li>
+            <li class="tag-cloud__tag">Developer</li>
+            <li class="tag-cloud__tag">Raccoon</li>
         </ul>
 
     </aside>

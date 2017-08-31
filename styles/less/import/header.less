@@ -35,6 +35,8 @@
 .menu {
   background-color: @mainColor;
   border-bottom: 4px solid @secondColor;
+  z-index: 999;
+  position: relative;
 
   &__nav {
     display: flex;
@@ -56,12 +58,17 @@
     font-size: 1.1em;
     cursor: pointer;
     user-select: none;
+    z-index: 999;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      width: 100px;
+    }
 
     &--checked {
       &:after, &:before {
         content: '';
         position: absolute;
-        left: calc(50% - 8px);
+        left: calc(50% - 10px);
         bottom: -25px;
         border: 13px solid transparent;
         border-top: 10px solid @secondColor;
@@ -75,10 +82,117 @@
 
     &:hover {
       background-color: @secondColor;
+      color: @mainColor;
 
       &:after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 10px);
+        bottom: -25px;
+        border: 13px solid transparent;
         border-top: 10px solid @secondColor;
       }
+    }
+  }
+
+  &__article-buttons {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      display: flex;
+    }
+  }
+}
+
+.radio-button {
+  display: block;
+  position: relative;
+  height: calc(@menuHeight - 2px);
+  width: 45px;
+  background-color: #7ca7d9;
+  border-top: 1px solid @mainColor;
+  border-bottom: 1px solid @mainColor;
+  font-family: "Arial Narrow", sans-serif;
+  color: @mainColor;
+  font-size: 1.5em;
+  line-height: @menuHeight;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: @secondColor;
+    border-bottom: 1px solid @secondColor;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      bottom: -25px;
+      border: 13px solid transparent;
+      border-top: 10px solid @secondColor;
+    }
+  }
+
+  &__caption {
+    display: none;
+    position: absolute;
+    left: -37px;
+    top: 95px;
+    height: 45px;
+    width: 120px;
+    line-height: 37px;
+    background-color: rgba(224, 232, 241, 0.31);
+    text-shadow: white 0 0 2px;
+    font-family: "Trend Sans One", sans-serif;
+    font-size: 0.9em;
+    color: @mainColor;
+    white-space: nowrap;
+    text-align: center;
+    user-select: none;
+
+    &--about {
+      transform: rotate(-90deg);
+    }
+
+    &--information {
+      transform: rotate(90deg);
+      width: 220px;
+      left: -88px;
+      top: 145px;
+    }
+  }
+
+  &:hover &__caption {
+    display: block;
+  }
+
+  &__input {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  &__input:checked + &__caption {
+    display: block;
+  }
+
+  &--checked {
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      bottom: -25px;
+      border: 13px solid transparent;
+      border-top: 10px solid @secondColor;
+    }
+
+    &:after {
+      border-top: 10px solid #7ca7d9;
+      bottom: -20px;
     }
   }
 }

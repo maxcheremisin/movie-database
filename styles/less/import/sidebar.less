@@ -1,5 +1,35 @@
 .article {
 
+  @media screen and (min-width: @tablet-breakpoint) {
+    display: block;
+  }
+
+  &--about {
+    @media screen and (max-width: @tablet-breakpoint) {
+      display: none;
+    }
+  }
+
+  &--information {
+    @media screen and (max-width: @tablet-breakpoint) {
+      display: none;
+      height: 200px;
+    }
+  }
+
+  &__header {
+    display: inline-block;
+    border-bottom: 5px solid @minorColor;
+    width: 100%;
+    margin-bottom: 14px;
+    line-height: 0;
+    white-space: nowrap;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      display: none;
+    }
+  }
+
   &__icon {
     display: inline-block;
     width: 30px;
@@ -32,15 +62,6 @@
       font-size: 1.13em;
       color: white;
     }
-  }
-
-  &__header {
-    display: inline-block;
-    border-bottom: 5px solid @minorColor;
-    width: 100%;
-    margin-bottom: 14px;
-    line-height: 0;
-    white-space: nowrap;
   }
 
   &__text {

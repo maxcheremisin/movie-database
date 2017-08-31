@@ -4,6 +4,12 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 
+  @media screen and (max-width: @tablet-breakpoint) {
+    width: @contentWidth;
+    justify-content: center;
+    margin: 0 auto 25px;
+  }
+
   &__tag {
     position: relative;
     height: 18px;
@@ -18,6 +24,10 @@
     margin-bottom: 4px;
     margin-top: 2px;
     cursor: pointer;
+
+    @media screen and (max-width: @tablet-breakpoint) {
+      margin-bottom: 8px;
+    }
 
     &:after {
       position: absolute;
