@@ -3,11 +3,21 @@
   align-content: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
+  user-select: none;
 
-  @media screen and (max-width: @tablet-breakpoint) {
-    width: @contentWidth;
+  @media @tablet {
+    width: 100%;
     justify-content: center;
     margin: 0 auto 25px;
+  }
+
+  @media @mobile {
+    display: none;
+    position: relative;
+    background-color: #e1eefc;
+    padding-bottom: 38px;
+    padding-top: 34px;
+    margin: 0;
   }
 
   &__tag {
@@ -25,8 +35,13 @@
     margin-top: 2px;
     cursor: pointer;
 
-    @media screen and (max-width: @tablet-breakpoint) {
+    @media @tablet {
       margin-bottom: 8px;
+    }
+
+    @media @mobile {
+      background-color: #99bbda;
+      color: #e1eefc;
     }
 
     &:after {
@@ -36,6 +51,10 @@
       right: -23px;
       border: 9px solid transparent;
       border-left: 9px solid @minorColor;
+
+      @media @mobile {
+        border-left: 9px solid #99bbda;
+      }
     }
 
     &:before {

@@ -1,11 +1,17 @@
-.main-content {
-  @media screen and (max-width: @tablet-breakpoint) {
-    max-width: 100%;
+.content {
+  &__main-content {
+    @media screen and (max-width: @tablet-breakpoint) {
+      max-width: 100%;
+    }
+
+    @media @mobile {
+      margin-top: 20px;
+    }
   }
 }
 
 .blog-post {
-  @media screen and (max-width: @tablet-breakpoint) {
+  @media @tablet {
     position: relative;
     width: 100%;
   }
@@ -14,9 +20,23 @@
     width: @contentWidth;
     color: @fontColor;
 
-    @media screen and (max-width: @tablet-breakpoint) {
+    @media @tablet {
       margin: 0 auto;
     }
+
+    @media @tablet-min {
+      width: 80%;
+    }
+
+    @media @mobile {
+      position: relative;
+      line-height: 0;
+      width: 90%;
+    }
+  }
+
+  &__banner {
+    width: 100%;
   }
 
   &__header {
@@ -25,6 +45,14 @@
     font-weight: 700;
     margin-top: 6px;
     margin-bottom: 8px;
+    line-height: normal;
+
+    @media @mobile {
+      margin: 0;
+      background-color: #f4f5f6;
+      text-align: center;
+      padding: 17px 10px;
+    }
   }
 
   &__info {
@@ -35,20 +63,57 @@
     border-bottom: 1px solid #e2e5e8;
     align-items: center;
     font-family: Arial, sans-serif;
+
+    @media @mobile {
+      border-top: none;
+    }
+
+    @media @mobile-min {
+      height: 55px;
+    }
   }
 
   &__post-data {
     display: flex;
     font-family: sans-serif;
     font-size: 0.75em;
+    white-space: nowrap;
+
+    @media @mobile {
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    @media @mobile-min {
+      flex-wrap: wrap;
+    }
   }
 
   &__author {
     margin-left: 10px;
+
+    @media @mobile {
+      margin: 0;
+    }
+
+    @media @mobile-min {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__date {
     margin-left: 5px;
+
+    @media @mobile {
+      margin: 0;
+    }
+
+    @media @mobile-min {
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__data-icon {
@@ -57,7 +122,7 @@
 
     &.blog-post__data-icon--date {
       width: 12px;
-      height: 12px;
+      height: 14px;
       margin-right: 4px;
     }
 
@@ -66,6 +131,11 @@
       height: 14px;
       margin-right: 4px;
       margin-left: 8px;
+
+      @media @mobile-min {
+        margin-left: 0;
+        width: 16px;
+      }
     }
   }
 
@@ -77,6 +147,10 @@
     font-size: 0.79em;
     text-align: justify;
     line-height: 18px;
+
+    @media @mobile {
+      margin-bottom: 80px;
+    }
   }
 }
 
@@ -85,7 +159,7 @@
   align-items: center;
   height: 38px;
 
-  @media screen and (max-width: @tablet-breakpoint) {
+  @media @tablet {
     position: absolute;
     right: 0;
     top: 0;
@@ -93,6 +167,27 @@
     flex-direction: column;
     height: 152px;
     justify-content: space-between;
+  }
+
+  @media @tablet-min {
+    max-height: 39%;
+  }
+
+  @media @mobile {
+    right: auto;
+    top: auto;
+    bottom: -44px;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @media @mobile {
+    bottom: -52px;
+    height: 52px;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 
   &__button {
@@ -131,7 +226,7 @@
       background-color: #d83933;
     }
 
-    @media screen and (max-width: @tablet-breakpoint) {
+    @media @tablet {
       &--facebook {
         background-color: #3c5a98;
       }
@@ -155,6 +250,15 @@
       &:hover {
         background-color: #d4dce5;
       }
+    }
+
+    //@media @tablet-min {
+    //  width: 70%;
+    //}
+
+    @media @mobile {
+      margin: 0;
+      width: auto;
     }
   }
 

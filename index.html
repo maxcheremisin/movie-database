@@ -12,14 +12,20 @@
 <header class="header page__header">
     <div class="logo">
         <div class="logo__container">
-            <div class="logo__text logo__text--left">RACCO</div>
-            <svg class="logo__icon">
-                <use xlink:href="icons/sprite.svg#icon-racoon-negative"></use>
-            </svg>
-            <div class="logo__text logo__text--right">NBLOG</div>
+            <img src="images/logo.png" alt="logo" class="logo__image logo__image--max">
+            <img src="images/logo-min.png" alt="logo" class="logo__image logo__image--min">
         </div>
     </div>
     <div class="menu">
+        <label class="radio-button radio-button--burger">
+            <input class="radio-button__input radio-button__input--burger"
+                   type="radio"
+                   name="menu-button"
+                   value="menu">
+            <svg class="radio-button__icon radio-button__icon--burger">
+                <use xlink:href="icons/sprite.svg#icon-menu"></use>
+            </svg>
+        </label>
         <ul class="menu__nav list">
             <li class="menu__item">JAVASCRIPT</li>
             <li class="menu__item">CSS</li>
@@ -51,12 +57,31 @@
                 <div class="radio-button__icon radio-button__icon--information">!</div>
             </label>
 
+            <label class="menu__button radio-button radio-button--tags">
+                <input class="radio-button__input radio-button__input--tags"
+                       type="radio"
+                       name="menu-button"
+                       value="tags">
+                <svg class="radio-button__icon radio-button__icon--tags">
+                    <use xlink:href="icons/sprite.svg#icon-tag"></use>
+                </svg>
+            </label>
+
+            <div class="menu__header">
+                <div class="menu__header-text">RACCO</div>
+                <div class="menu__header-image">
+                    <svg class="menu__header-icon">
+                        <use xlink:href="icons/sprite.svg#icon-racoon-positive"></use>
+                    </svg>
+                </div>
+                <div class="menu__header-text">NBLOG</div>
+            </div>
         </div>
     </div>
 </header>
 
 <div class="content page__content">
-    <main class="main-content">
+    <main class="content__main-content main-content">
         <div class="blog-post">
             <div class="blog-post__container">
                 <img src="images/blogoflowers.png" class="blog-post__banner">
@@ -192,8 +217,8 @@
         </div>
     </main>
 
-    <aside class="sidebar page__sidebar">
-        <div class="article article--about">
+    <aside class="content__sidebar sidebar page__sidebar">
+        <div class="article article--about hide-article hide-article--about">
             <div class="article__header article__header--about">
                 <div class="article__icon article__icon--about"></div>
                 <span class="article__caption article__caption--about">ABOUT</span>
@@ -205,8 +230,14 @@
                 adipisicing elit. Architecto earum eos mollitia nulla recusandae reiciendis rerum. Ad aliquam
                 asperiores assumenda.
             </div>
+            <div class="hide-button hide-button--about">
+                ABOUT
+                <svg class="hide-button__icon">
+                    <use xlink:href="icons/sprite.svg#icon-arrow"></use>
+                </svg>
+            </div>
         </div>
-        <div class="article article--information">
+        <div class="article article--information hide-article hide-article--information">
             <div class="article__header article__header--information">
                 <div class="article__icon article__icon--information"></div>
                 <span class="article__caption article__caption--information">SOME INFORMATION</span>
@@ -217,9 +248,15 @@
                 sapiente suscipit tempora, voluptate.
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem blanditiis dicta.
             </div>
+            <div class="hide-button hide-button--information">
+                SOME INFORMATION
+                <svg class="hide-button__icon">
+                    <use xlink:href="icons/sprite.svg#icon-arrow"></use>
+                </svg>
+            </div>
         </div>
 
-        <ul class="tag-cloud list">
+        <ul class="tag-cloud list hide-article hide-article--tags">
             <li class="tag-cloud__tag">Raccoon</li>
             <li class="tag-cloud__tag">Raccoon</li>
             <li class="tag-cloud__tag">Coon</li>
@@ -235,6 +272,11 @@
             <li class="tag-cloud__tag">Cat</li>
             <li class="tag-cloud__tag">Developer</li>
             <li class="tag-cloud__tag">Raccoon</li>
+            <div class="hide-button hide-button--tags">
+                <svg class="hide-button__icon">
+                    <use xlink:href="icons/sprite.svg#icon-arrow"></use>
+                </svg>
+            </div>
         </ul>
 
     </aside>

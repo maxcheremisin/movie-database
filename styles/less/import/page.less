@@ -13,33 +13,40 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    margin-top: 49px;
 
-    @media screen and (max-width: @tablet-breakpoint) {
+    @media @tablet {
       flex-direction: column-reverse;
       justify-content: center;
       width: auto;
+      margin-top: 33px;
+    }
+
+    @media @mobile {
+      margin-top: 0;
     }
   }
 
   &__header {
-    min-width: @pageWidth;
-    margin-bottom: 49px;
+    //min-width: @pageWidth;
     z-index: 999;
-
-    @media screen and (max-width: @tablet-breakpoint) {
-      min-width: @contentWidth;
-      margin-bottom: 33px;
-    }
   }
 
   &__sidebar {
     width: @sidebarWidth;
     overflow: hidden;
 
-
-    @media screen and (max-width: @tablet-breakpoint) {
+    @media @tablet {
       width: @contentWidth;
       margin: 0 auto;
+    }
+
+    @media @tablet-min {
+      width: 80%;
+    }
+
+    @media @mobile {
+      width: 100%;
     }
   }
 
@@ -47,5 +54,9 @@
     margin: 0 auto;
     width: @contentWidth;
     height: 100px;
+
+    @media @tablet-min {
+      width: 80%;
+    }
   }
 }

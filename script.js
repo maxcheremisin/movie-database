@@ -18,6 +18,15 @@
         }
     }
 
+    function dropDownMenu(selector) {
+        document.querySelector(selector).addEventListener('click', (function () {
+            let input = document.querySelector(selector);
+            let menu = document.querySelector('.menu__nav');
+
+            input.checked ? menu.style.display = 'flex' : menu.style.display = '';
+        }).bind(null, selector));
+    }
+
     function showArticle(selector) {
         document.querySelector(selector).addEventListener('click', (function () {
             let input = document.querySelector(selector);
@@ -26,8 +35,8 @@
             let button = document.querySelector('.radio-button--' + buttonName);
             let buttonClasses = button.classList;
             let targetClass = buttonClasses[buttonClasses.length - 1];
-            let article = document.querySelector('.article--' + buttonName);
-            let articles = document.getElementsByClassName('article');
+            let article = document.querySelector('.hide-article--' + buttonName);
+            let articles = document.getElementsByClassName('hide-article');
 
             if (targetClass === 'radio-button--checked') {
                 button.classList.remove('radio-button--checked');
@@ -40,13 +49,13 @@
                 for (let i = 0; i < articles.length; i++) {
                     articles[i].style.display = '';
                 }
-                article.style.display = 'block';
+                article.style.display = 'flex';
             } else {
                 button.classList.add('radio-button--checked');
                 for (let i = 0; i < articles.length; i++) {
                     articles[i].style.display = '';
                 }
-                article.style.display = 'block';
+                article.style.display = 'flex';
             }
 
         }).bind(null, selector));
@@ -76,9 +85,10 @@
         //     $header.style.marginBottom = marginFixed.toString() + 'px';
         // }
 
+        let width = window.innerWidth;
         let header = document.querySelector('.header');
-        let logoHeight = 87;
         let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+        let logoHeight = width <= 473 ? 55 : 87;
 
         if (scrolled >= logoHeight) {
             header.style.position = 'sticky';
@@ -92,4 +102,9 @@
     uncheckedRadio();
     showArticle('.radio-button__input--about');
     showArticle('.radio-button__input--information');
+    showArticle('.radio-button__input--tags');
+    showArticle('.hide-button--about');
+    showArticle('.hide-button--information');
+    showArticle('.hide-button--tags');
+    dropDownMenu('.radio-button__input--burger');
 }());
