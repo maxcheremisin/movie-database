@@ -59,7 +59,6 @@
                     article.style.display = 'flex';
                 }
 
-                console.log(targetClass);
                 event.preventDefault();
                 return;
             } else if (target.tagName === 'BODY') {
