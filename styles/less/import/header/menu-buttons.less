@@ -1,0 +1,230 @@
+.radio-button {
+  display: block;
+  position: relative;
+  height: calc(@menuHeight - 2px);
+  width: 45px;
+  background-color: #7ca7d9;
+  border-top: 1px solid @mainColor;
+  border-bottom: 1px solid @mainColor;
+  font-family: "Arial Narrow", sans-serif;
+  color: @mainColor;
+  font-size: 1.5em;
+  line-height: @menuHeight;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: @secondColor;
+    border-bottom: 1px solid #c6defa;
+
+    @media @mobile {
+      border: none;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 10px;
+      bottom: -25px;
+      border: 13px solid transparent;
+      border-top: 10px solid @secondColor;
+    }
+  }
+
+  &--tags {
+    display: none;
+  }
+
+  @media @mobile {
+    height: 31px;
+    width: 31px;
+    margin-left: 3px;
+    border: none;
+    line-height: 31px;
+    font-size: 1.2em;
+
+    &--tags {
+      display: block;
+    }
+
+    &:hover {
+      &:after, &:before {
+        content: '';
+        position: absolute;
+        left: 4px;
+        bottom: -23px;
+        border: 13px solid transparent;
+        border-top: 10px solid @mainColor;
+      }
+
+      &:after {
+        border-top: 10px solid @secondColor;
+        bottom: -20px;
+      }
+    }
+  }
+
+  &__caption {
+    display: none;
+    position: absolute;
+    left: -88px;
+    top: 145px;
+    height: 45px;
+    width: 220px;
+    line-height: 37px;
+    background-color: rgba(224, 232, 241, 0.31);
+    text-shadow: white 0 0 2px;
+    font-family: "Trend Sans One", sans-serif;
+    font-size: 0.9em;
+    color: @mainColor;
+    white-space: nowrap;
+    text-align: center;
+    user-select: none;
+
+    &--about {
+      transform: rotate(-90deg);
+    }
+
+    &--information {
+      transform: rotate(90deg);
+    }
+  }
+
+  &:hover &__caption {
+    display: block;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    visibility: hidden;
+
+    &--burger:checked {
+      &:before {
+        visibility: visible;
+        content: '';
+        position: absolute;
+        left: -19px;
+        bottom: -39px;
+        border: 13px solid transparent;
+        border-top: 10px solid @mainColor;
+        z-index: 999;
+      }
+    }
+  }
+
+  &__input:checked + &__caption {
+    display: block;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  &--checked {
+    &:after, &:before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      bottom: -25px;
+      border: 13px solid transparent;
+      border-top: 10px solid @secondColor;
+    }
+
+    &:after {
+      border-top: 10px solid #7ca7d9;
+      bottom: -20px;
+    }
+  }
+
+  @media @mobile {
+    &--checked {
+      &:after, &:before {
+        content: '';
+        position: absolute;
+        left: 3px;
+        bottom: -23px;
+        border: 13px solid transparent;
+        border-top: 10px solid @mainColor;
+      }
+
+      &:after {
+        border-top: 10px solid #7ca7d9;
+        bottom: -20px;
+      }
+    }
+  }
+
+  &__icon {
+    height: 45px;
+    width: 45px;
+    fill: currentColor;
+
+    @media @mobile {
+      height: 31px;
+      width: 31px;
+    }
+
+    &--tags {
+      transform: scale(0.6);
+    }
+
+    &--burger {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: scale(0.6);
+      height: 35px;
+      width: 35px;
+      fill: currentColor;
+      z-index: 999;
+    }
+  }
+
+  &--burger {
+    display: none;
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    background: none;
+    top: 0;
+    right: 1px;
+    color: #7ca7d9;
+    cursor: pointer;
+
+    @media @mobile {
+      display: block;
+    }
+
+    &:hover {
+      background: none;
+      color: @secondColor;
+    }
+
+    &:hover {
+      &:after, &:before {
+        display: none;
+      }
+    }
+
+    &:checked {
+      &:after, &:before {
+        content: '';
+        position: absolute;
+        left: 3px;
+        bottom: -23px;
+        border: 13px solid transparent;
+        border-top: 10px solid @mainColor;
+      }
+
+      &:after {
+        border-top: 10px solid #7ca7d9;
+        bottom: -20px;
+      }
+    }
+  }
+}

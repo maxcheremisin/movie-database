@@ -9,7 +9,7 @@
 </head>
 <body class="page">
 
-<header class="header page__header">
+<header class="header page__header js-header-onscroll">
     <div class="logo">
         <div class="logo__container">
             <img src="images/logo.png" alt="logo" class="logo__image logo__image--max">
@@ -17,8 +17,8 @@
         </div>
     </div>
     <div class="menu">
-        <label class="radio-button radio-button--burger">
-            <input class="radio-button__input radio-button__input--burger"
+        <label class="radio-button radio-button--burger js-radio-button--burger">
+            <input class="radio-button__input radio-button__input--burger js-button js-button--burger"
                    type="radio"
                    name="menu-button"
                    value="menu">
@@ -26,7 +26,7 @@
                 <use xlink:href="icons/sprite.svg#icon-menu"></use>
             </svg>
         </label>
-        <ul class="menu__nav list">
+        <ul class="menu__nav list js-drop-menu">
             <li class="menu__item">JAVASCRIPT</li>
             <li class="menu__item">CSS</li>
             <li class="menu__item menu__item--checked">LATEST</li>
@@ -35,8 +35,8 @@
         </ul>
         <div class="menu__article-buttons">
 
-            <label class="menu__button radio-button radio-button--about">
-                <input class="radio-button__input radio-button__input--about"
+            <label class="menu__button radio-button radio-button--about js-radio-button--about">
+                <input class="radio-button__input radio-button__input--about js-button js-button--about"
                        type="radio"
                        name="menu-button"
                        value="about">
@@ -46,8 +46,8 @@
                 <div class="radio-button__icon radio-button__icon--about">?</div>
             </label>
 
-            <label class="menu__button radio-button radio-button--information">
-                <input class="radio-button__input radio-button__input--information"
+            <label class="menu__button radio-button radio-button--information js-radio-button--information">
+                <input class="radio-button__input radio-button__input--information js-button js-button--information"
                        type="radio"
                        name="menu-button"
                        value="information">
@@ -57,8 +57,8 @@
                 <div class="radio-button__icon radio-button__icon--information">!</div>
             </label>
 
-            <label class="menu__button radio-button radio-button--tags">
-                <input class="radio-button__input radio-button__input--tags"
+            <label class="menu__button radio-button radio-button--tags js-radio-button--tags">
+                <input class="radio-button__input radio-button__input--tags js-button js-button--tags"
                        type="radio"
                        name="menu-button"
                        value="tags">
@@ -218,7 +218,7 @@
     </main>
 
     <aside class="content__sidebar sidebar page__sidebar">
-        <div class="article article--about hide-article hide-article--about">
+        <div class="article article--about js-article js-article--about">
             <div class="article__header article__header--about">
                 <div class="article__icon article__icon--about"></div>
                 <span class="article__caption article__caption--about">ABOUT</span>
@@ -230,14 +230,14 @@
                 adipisicing elit. Architecto earum eos mollitia nulla recusandae reiciendis rerum. Ad aliquam
                 asperiores assumenda.
             </div>
-            <div class="hide-button hide-button--about">
+            <div class="hide-button hide-button--about js-hide-button js-hide-button--about">
                 ABOUT
                 <svg class="hide-button__icon">
                     <use xlink:href="icons/sprite.svg#icon-arrow"></use>
                 </svg>
             </div>
         </div>
-        <div class="article article--information hide-article hide-article--information">
+        <div class="article article--information js-article js-article--information">
             <div class="article__header article__header--information">
                 <div class="article__icon article__icon--information"></div>
                 <span class="article__caption article__caption--information">SOME INFORMATION</span>
@@ -248,7 +248,7 @@
                 sapiente suscipit tempora, voluptate.
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus autem blanditiis dicta.
             </div>
-            <div class="hide-button hide-button--information">
+            <div class="hide-button hide-button--information js-hide-button js-hide-button--information">
                 SOME INFORMATION
                 <svg class="hide-button__icon">
                     <use xlink:href="icons/sprite.svg#icon-arrow"></use>
@@ -256,7 +256,7 @@
             </div>
         </div>
 
-        <ul class="tag-cloud list hide-article hide-article--tags">
+        <ul class="tag-cloud list js-article js-article--tags">
             <li class="tag-cloud__tag">Raccoon</li>
             <li class="tag-cloud__tag">Raccoon</li>
             <li class="tag-cloud__tag">Coon</li>
@@ -272,7 +272,7 @@
             <li class="tag-cloud__tag">Cat</li>
             <li class="tag-cloud__tag">Developer</li>
             <li class="tag-cloud__tag">Raccoon</li>
-            <div class="hide-button hide-button--tags">
+            <div class="hide-button hide-button--tags js-hide-button js-hide-button--tags">
                 <svg class="hide-button__icon">
                     <use xlink:href="icons/sprite.svg#icon-arrow"></use>
                 </svg>

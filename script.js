@@ -21,7 +21,7 @@
     function dropDownMenu(selector) {
         document.querySelector(selector).addEventListener('click', (function () {
             let input = document.querySelector(selector);
-            let menu = document.querySelector('.menu__nav');
+            let menu = document.querySelector('.js-drop-menu');
 
             input.checked ? menu.style.display = 'flex' : menu.style.display = '';
         }).bind(null, selector));
@@ -32,11 +32,11 @@
             let input = document.querySelector(selector);
             let inputClasses = input.classList;
             let buttonName = inputClasses[inputClasses.length - 1].split('--')[1];
-            let button = document.querySelector('.radio-button--' + buttonName);
+            let button = document.querySelector('.js-radio-button--' + buttonName);
             let buttonClasses = button.classList;
             let targetClass = buttonClasses[buttonClasses.length - 1];
-            let article = document.querySelector('.hide-article--' + buttonName);
-            let articles = document.getElementsByClassName('hide-article');
+            let article = document.querySelector('.js-article--' + buttonName);
+            let articles = document.getElementsByClassName('js-article');
 
             if (targetClass === 'radio-button--checked') {
                 button.classList.remove('radio-button--checked');
@@ -62,31 +62,8 @@
     }
 
     function onScroll() {
-        // let width = window.innerWidth;
-        // let $menu = document.querySelector('.menu');
-        // let $header = document.querySelector('.page__header');
-        // let scrolled = window.pageYOffset || document.documentElement.scrollTop;
-        // let logoHeight = 87;
-        // let menuHeight = 54;
-        // let marginTablet = 33;
-        // let marginDesktop = 49;
-        // let marginStatic = width > 939 ? marginDesktop : marginTablet;
-        // let marginFixed = marginStatic + menuHeight;
-        //
-        // if (scrolled < logoHeight) {
-        //     $menu.style.position = 'relative';
-        //     $menu.style.top = 'auto';
-        //     $menu.style.width = 'auto';
-        //     $header.style.marginBottom = marginStatic.toString() + 'px';
-        // } else if (scrolled > logoHeight) {
-        //     $menu.style.position = 'fixed';
-        //     $menu.style.top = '0';
-        //     $menu.style.width = '100%';
-        //     $header.style.marginBottom = marginFixed.toString() + 'px';
-        // }
-
         let width = window.innerWidth;
-        let header = document.querySelector('.header');
+        let header = document.querySelector('.js-header-onscroll');
         let scrolled = window.pageYOffset || document.documentElement.scrollTop;
         let logoHeight = width <= 473 ? 55 : 87;
 
@@ -100,11 +77,11 @@
 
     window.onscroll = onScroll;
     uncheckedRadio();
-    showArticle('.radio-button__input--about');
-    showArticle('.radio-button__input--information');
-    showArticle('.radio-button__input--tags');
-    showArticle('.hide-button--about');
-    showArticle('.hide-button--information');
-    showArticle('.hide-button--tags');
-    dropDownMenu('.radio-button__input--burger');
+    showArticle('.js-button--about');
+    showArticle('.js-button--information');
+    showArticle('.js-button--tags');
+    showArticle('.js-hide-button--about');
+    showArticle('.js-hide-button--information');
+    showArticle('.js-hide-button--tags');
+    dropDownMenu('.js-button--burger');
 }());

@@ -1,0 +1,55 @@
+.loader {
+  position: relative;
+  margin: 0 auto;
+  width: @loaderSize;
+  height: @loaderSize;
+  line-height: 0;
+  font-size: 0;
+  animation: loaderRotate 1s linear infinite;
+
+  &__circle {
+    position: absolute;
+    top: @loaderThickness;
+    left: @loaderThickness;
+    width: @loaderHoleSize;
+    height: @loaderHoleSize;
+    border-radius: 100%;
+    background-color: white;
+  }
+
+  &__spinner {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    height: @loaderSize;
+    width: calc(@loaderSize / 2);
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: @loaderSize;
+      border-radius: 100%;
+    }
+
+    &--left:before {
+      left: 0;
+      background: linear-gradient(0deg, @minorColor 0%, white 100%);
+    }
+
+    &--right:before {
+      right: 0;
+      background: linear-gradient(0deg, white 0%, @minorColor 100%);
+    }
+  }
+}
+
+@keyframes loaderRotate {
+  0%   {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
