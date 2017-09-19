@@ -1,0 +1,143 @@
+.blog-post {
+  @media @tablet {
+    position: relative;
+    width: 100%;
+  }
+
+  &__container {
+    width: @contentWidth;
+    color: @fontColor;
+
+    @media @tablet {
+      margin: 0 auto;
+    }
+
+    @media @tablet-min {
+      width: 80%;
+    }
+
+    @media @mobile {
+      position: relative;
+      line-height: 0;
+      width: 90%;
+    }
+  }
+
+  &__banner {
+    width: 100%;
+  }
+
+  &__header {
+    font-size: 1.29em;
+    font-family: "Arial Narrow", sans-serif;
+    font-weight: 700;
+    margin-top: 6px;
+    margin-bottom: 8px;
+    line-height: normal;
+
+    @media @mobile {
+      margin: 0;
+      background-color: #f4f5f6;
+      text-align: center;
+      padding: 17px 10px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    height: 38px;
+    border-top: 1px solid #e2e5e8;
+    border-bottom: 1px solid #e2e5e8;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+    @media @mobile {
+      border-top: none;
+    }
+
+    @media @mobile-min {
+      height: 55px;
+    }
+  }
+
+  &__post-data {
+    display: flex;
+    font-family: sans-serif;
+    font-size: 0.75em;
+    white-space: nowrap;
+
+    @media @mobile {
+      width: 100%;
+      justify-content: space-around;
+    }
+
+    @media @mobile-min {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__author {
+    margin-left: 10px;
+
+    @media @mobile {
+      margin: 0;
+    }
+
+    @media @mobile-min {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__date {
+    margin-left: 5px;
+
+    @media @mobile {
+      margin: 0;
+    }
+
+    @media @mobile-min {
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__data-icon {
+    fill: #a2aab2;
+    vertical-align: -2px;
+
+    &.blog-post__data-icon--date {
+      width: 12px;
+      height: 14px;
+      margin-right: 4px;
+    }
+
+    &.blog-post__data-icon--author {
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      margin-left: 8px;
+
+      @media @mobile-min {
+        margin-left: 0;
+        width: 16px;
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 12px;
+    margin-bottom: 53px;
+    font-family: Arial, sans-serif;
+    font-weight: 500;
+    font-size: 0.79em;
+    text-align: justify;
+    line-height: 18px;
+
+    @media @mobile {
+      margin-bottom: 80px;
+    }
+  }
+}
