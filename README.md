@@ -1,7 +1,5 @@
-Launch the application with
+Use `npm i --production` to install dependencies
 
-`$ npm start`
+Run server on localhost with `npm start`
 
-To get the resulting CSS file use:
-
-`$ npm run build-css`
+Quick view: <https://netflixrouletteapp.herokuapp.com>

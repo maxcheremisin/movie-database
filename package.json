@@ -1,25 +1,49 @@
 {
-  "name": "raccoon",
+  "name": "netflixroulette",
   "version": "1.0.0",
-  "description": "blog layout",
-  "main": "server.js",
+  "description": "single page application",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build-css && node server.js",
-    "build-css": "lessc styles/less/style.less styles/css/style.css --autoprefix=\"last 2 versions\"",
-    "less-watch": "less-watch-compiler styles/less styles/css style.less"
-  },
-  "dependencies": {
-    "less": "^2.7.2",
-    "less-plugin-autoprefix": "^1.5.1"
-  },
-  "author": "Maxim Cheremisin",
-  "license": "ISC",
-  "devDependencies": {
-    "less-watch-compiler": "^1.7.0"
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "start": "node server.js",
+    "build": "cross-env NODE_ENV='production' webpack"
   },
   "repository": {
     "type": "git",
     "url": "https://Maxim_Cheremisin@git.epam.com/Maxim_Cheremisin/cheremisin_maxim-2017.git"
+  },
+  "author": "Maxim Cheremisin",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "fetch-mock": "^5.13.1",
+    "html-webpack-plugin": "^2.30.1",
+    "jest": "^21.2.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "redux-mock-store": "^1.3.0",
+    "regenerator-runtime": "^0.11.0",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0"
   }
 }

@@ -1,5 +1,4 @@
-.gitignore
-.idea
 node_modules
-styles/css
+.gitignore
+.idea/
 other

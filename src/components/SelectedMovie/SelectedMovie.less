@@ -1,0 +1,110 @@
+@import "../../variables";
+
+.selectedMovie {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+
+  &__poster-container {
+    min-width: 18rem;
+    min-height: 25rem;
+  }
+
+  &__poster {
+    object-fit: cover;
+    width: 18rem;
+    height: 25rem;
+    color: #bcbcbc;
+    font-family: "Arial", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__info {
+    margin-left: 4rem;
+    margin-top: 1.2rem;
+    font-family: "Arial", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #a5a5a5;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: @secondColor;
+    margin-bottom: 0.5rem;
+  }
+
+  &__rating {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin-left: 2rem;
+    color: limegreen;
+    font-weight: 500;
+    font-size: 1.5rem;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 5px;
+    text-align: center;
+  }
+
+  &__category {
+    margin-bottom: 1rem;
+  }
+
+  &__year-runtime {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+
+    &--year {
+      margin-right: 2rem;
+    }
+  }
+
+  &__summary {
+    margin-bottom: 2rem;
+  }
+
+  &__director {
+    margin-bottom: 1.5rem;
+  }
+
+  &__director, &__cast {
+    font-size: 1.1rem;
+  }
+
+  &__searchButton {
+    position: absolute;
+    top: -4.8rem;
+    right: 0;
+    border: none;
+    border-radius: 2px;
+    font-family: "Arial", sans-serif;
+    color: @secondColor;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: white;
+    padding: 0.8rem 1.4rem;
+    outline: none;
+    cursor: pointer;
+
+    &--brokenLink {
+      top: 0.8rem;
+      right: 3rem;
+    }
+
+    &:active {
+      background-color: @secondColor;
+      color: white;
+    }
+  }
+}
