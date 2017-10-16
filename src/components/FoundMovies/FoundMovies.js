@@ -1,19 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Movie from "../Movie/Movie";
+import Utils from '../../utils/Utils'
 import './FoundMovies.less';
 
-const FoundMovies = ({movies, history}) => (
-    <div className="foundMovies page__main">
-        {movies.map((movie, index) => {
-            return (
-                <Movie
-                    movie={movie}
-                    key={index}
-                    history={history}
-                />
-            )
-        })}
-    </div>
-);
+class FoundMovies extends Component {
+
+    componentDidUpdate() {
+        this.props.movies.sort(Utils.sortByDate);
+    }
+
+    render() {
+        const {
+            history,
+            movies,
+            genres,
+        } = this.props;
+
+        return (
+            <div className="foundMovies page__main">
+                {movies.map((movie, index) => {
+                    return (
+                        <Movie
+                            movie={movie}
+                            genres={genres}
+                            key={index}
+                            history={history}
+                        />
+                    )
+                })}
+            </div>
+        )
+    }
+}
 
 export default FoundMovies;

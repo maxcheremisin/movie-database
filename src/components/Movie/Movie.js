@@ -1,7 +1,7 @@
 import React from 'react';
 import './Movie.less';
 
-const Movie = ({movie, history}) => (
+const Movie = ({movie, genres, history}) => (
     <div className="movie"
          onClick={() => {
              history.push(`/film/${movie.id}`);
@@ -9,7 +9,9 @@ const Movie = ({movie, history}) => (
          }}>
         <div className="movie__poster-container">
             <img className="movie__poster"
-                 src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                 src={movie.poster_path ?
+                     'https://image.tmdb.org/t/p/w500' + movie.poster_path
+                     : require('../../images/no-poster.jpg')}
                  alt={"poster of " + movie.title}
             />
         </div>
@@ -18,13 +20,21 @@ const Movie = ({movie, history}) => (
                 {movie.title}
             </div>
             <div className="movie__category">
-                {movie.category}
+                {movie.genre_ids.map((id, index) => {
+                    for (let i = 0; i < genres.length; i++) {
+                        if (genres[i].id === id) {
+                            return (
+                                <span key={index}>{genres[i].name} </span>
+                            );
+                        }
+                    }
+                })}
             </div>
 
             {movie.release_date &&
-                <div className="movie__year">
-                    {movie.release_date.split('-')[0]}
-                </div>
+            <div className="movie__year">
+                {movie.release_date.split('-')[0]}
+            </div>
             }
         </div>
     </div>

@@ -64,6 +64,7 @@ class AppSearch extends Component {
             onSearchInput,
             match,
             movies,
+            genres,
             loading,
             searchType,
             searchInput
@@ -97,6 +98,7 @@ class AppSearch extends Component {
                 ) : (
                     <FoundMovies
                         movies={movies}
+                        genres={genres}
                         history={history}
                     />
                 )}

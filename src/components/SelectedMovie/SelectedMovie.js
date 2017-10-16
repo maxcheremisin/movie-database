@@ -31,7 +31,9 @@ const SelectedMovie = ({movie, cast, director}) => {
             <div className="selectedMovie page__selectedMovie page__wrapper">
                 <div className="selectedMovie__poster-container">
                     <img className="selectedMovie__poster"
-                         src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                         src={movie.poster_path ?
+                             'https://image.tmdb.org/t/p/w500' + movie.poster_path
+                             : require('../../images/no-poster.jpg')}
                          alt={"poster of " + movie.title}
                     />
                 </div>

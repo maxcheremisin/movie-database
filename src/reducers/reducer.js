@@ -2,6 +2,7 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = {
     movies: [],
+    genres: [],
     cast: '',
     director: '',
     selectedMovie: {},
@@ -32,6 +33,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 movies: action.payload,
+            };
+        case types.RECEIVE_GENRES:
+            return {
+                ...state,
+                genres: action.payload,
             };
         case types.RECEIVE_CAST:
             return {

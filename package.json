@@ -1,5 +1,5 @@
 {
-  "name": "netflixroulette",
+  "name": "movieDB",
   "version": "1.0.0",
   "description": "single page application",
   "main": "index.js",

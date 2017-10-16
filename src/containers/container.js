@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
     state,
     store: state,
     movies: state.movies,
+    genres: state.genres,
     cast: state.cast,
     director: state.director,
     selectedMovie: state.selectedMovie,
