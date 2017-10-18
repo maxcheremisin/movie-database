@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader';
 class AppSearch extends Component {
 
     componentWillMount() {
+        this.props.onGetGenres();
         this.props.match.params.query &&
             this.props.onGetMovies(this.props.searchType, this.props.match.params.query);
     }

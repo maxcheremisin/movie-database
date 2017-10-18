@@ -25,6 +25,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
     onMoviesSorting: actions.moviesSorting,
     onSetLoader: actions.setLoader,
     onGetMovies: actions.getMovies,
+    onGetGenres: actions.getGenres,
     onSortMovies: actions.sortMovies,
     onGetCurrentMovie: actions.getCurrentMovie,
     onGetMoviesBySameDirector: actions.getMoviesBySameDirector,

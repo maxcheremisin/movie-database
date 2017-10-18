@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {ConnectedAppSearch} from '../../containers/container';
 import {ConnectedAppMovie} from '../../containers/container';

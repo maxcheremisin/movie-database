@@ -77,7 +77,6 @@ export const getMovies = (type, query) => dispatch => {
     let url;
 
     dispatch(setLoader('Loading...'));
-    dispatch(getGenres());
     (type === 'title') ?
         url = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}` :
         url = `https://api.themoviedb.org/3/search/person?query=${query}&api_key=${API_KEY}`;

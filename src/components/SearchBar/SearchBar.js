@@ -17,13 +17,19 @@ class SearchBar extends Component {
                 <div className="searchBar__label">
                     FIND YOUR MOVIE
                 </div>
-                <input
-                    defaultValue={value}
-                    className="searchBar__input"
-                    placeholder="ENTER SEARCH QUERY"
-                    ref={(input) => {this.searchInput = input}}
-                    onChange={() => onSearchInput(this.searchInput.value)}
-                />
+                <div className="searchBar__inputContainer">
+                    <input
+                        defaultValue={value}
+                        className="searchBar__input"
+                        placeholder="ENTER SEARCH QUERY"
+                        ref={(input) => {this.searchInput = input}}
+                        onChange={() => onSearchInput(this.searchInput.value)}
+                    />
+                    <button className="searchBar__inputIcon"
+                            type="submit">
+                        ↲
+                    </button>
+                </div>
                 <button className="searchBar__button
                                    searchBar__button--submit"
                         type="submit">

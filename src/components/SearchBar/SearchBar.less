@@ -10,6 +10,10 @@
     margin-bottom: 2rem;
   }
 
+  &__inputContainer{
+    position: relative;
+  }
+
   &__input {
     box-sizing: border-box;
     margin-bottom: 1.5rem;
@@ -23,7 +27,7 @@
     font-family: "Arial", sans-serif;
     font-weight: 600;
     padding-left: 2rem;
-    padding-right: 2rem;
+    padding-right: 3rem;
     outline: none;
 
     &::placeholder {
@@ -31,6 +35,21 @@
       font-size: 1.3rem;
       font-weight: 500;
     }
+  }
+
+  &__inputIcon {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.1rem;
+    border: none;
+    background: none;
+    color: @mainColor;
+    font-size: 1.3rem;
+    font-weight: 900;
+    font-family: Monospaced, monospace;
+    z-index: 999;
+    user-select: none;
+    outline: none;
   }
 
   &__filterLabel {

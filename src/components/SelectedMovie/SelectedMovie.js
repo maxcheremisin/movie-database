@@ -6,7 +6,7 @@ const SelectedMovie = ({movie, cast, director}) => {
     let color;
 
     if (movie.vote_average >= 8) {
-        color = '#87D42C';
+        color = '#00de74';
     } else if (movie.vote_average >= 5) {
         color = 'orange';
     } else if (movie.vote_average >= 2) {
@@ -39,23 +39,33 @@ const SelectedMovie = ({movie, cast, director}) => {
                 </div>
 
                 <div className="selectedMovie__info">
-                    <div className="selectedMovie__title">
-                        {movie.title}
+                    <div className="selectedMovie__infoHeader">
+                        <div className="selectedMovie__title">
+                            {movie.title}
+                        </div>
+                        {movie.vote_average > 0 &&
                         <div className="selectedMovie__rating"
                              style={ratingStyle}>
-                            {movie.vote_average}
+                            <div className="selectedMovie__ratingCounter">
+                                {movie.vote_average}
+                            </div>
                         </div>
+                        }
                     </div>
                     <div className="selectedMovie__category">
                         {genres.join(', ')}
                     </div>
                     <div className="selectedMovie__year-runtime">
-                        <span className="selectedMovie__year-runtime--year">
-                            {movie.release_date.split('-')[0]}
-                        </span>
-                        <span className="selectedMovie__year-runtime--time">
-                            {movie.runtime + ' min'}
-                        </span>
+                        {movie.release_date &&
+                            <span className="selectedMovie__year-runtime--year">
+                                {movie.release_date.split('-')[0]}
+                            </span>
+                        }
+                        {movie.release_date > 0 &&
+                            <span className="selectedMovie__year-runtime--time">
+                                {movie.runtime + ' min'}
+                            </span>
+                        }
                     </div>
                     <div className="selectedMovie__summary">
                         {movie.overview}

@@ -15,6 +15,7 @@ class AppMovie extends Component {
 
     componentWillMount() {
         this.props.onSetLoader('Loading...');
+        this.props.onGetGenres();
         this.props.onGetCurrentMovie(this.props.match.params.title);
     }
 
@@ -26,6 +27,7 @@ class AppMovie extends Component {
         const {
             history,
             loading,
+            genres,
             selectedMovie,
             cast,
             director,
@@ -52,6 +54,7 @@ class AppMovie extends Component {
                 ) : (
                     <FoundMovies
                         movies={moviesBySameDirector}
+                        genres={genres}
                         history={history} />
                 )}
             </div>
