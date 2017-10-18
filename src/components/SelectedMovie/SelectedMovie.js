@@ -61,7 +61,7 @@ const SelectedMovie = ({movie, cast, director}) => {
                                 {movie.release_date.split('-')[0]}
                             </span>
                         }
-                        {movie.release_date > 0 &&
+                        {movie.runtime > 0 &&
                             <span className="selectedMovie__year-runtime--time">
                                 {movie.runtime + ' min'}
                             </span>

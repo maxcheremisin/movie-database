@@ -32,8 +32,7 @@ module.exports = {
             NODE_ENV: JSON.stringify(NODE_ENV)
         }),
         new HtmlWebpackPlugin({
-            title: 'My App',
-            hash: true,
+            title: 'movieDB',
             template: './src/index.html'
         })
     ],
