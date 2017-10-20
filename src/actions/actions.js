@@ -2,22 +2,17 @@ import * as types from '../constants/ActionTypes';
 
 const API_KEY = '948c7b577e3d4ab870fc7d3a70aefce4';
 
-export const searchInput = (searchValue) => ({
+export const searchInput = searchValue => ({
     type: types.ENTER_SEARCH_VALUE,
     payload: searchValue
 });
 
-export const searchFilter = (type) => ({
+export const searchFilter = type => ({
     type: types.SWITCH_SEARCH_TYPE,
     payload: type
 });
 
-export const moviesSorting = (movies) => ({
-    type: types.SWITCH_SORTING_TYPE,
-    payload: movies
-});
-
-export const setLoader = (message) => ({
+export const setLoader = message => ({
     type: types.EDIT_LOADER_MESSAGE,
     payload: message
 });
@@ -26,7 +21,7 @@ export const resetStore = () => ({
     type: types.RESET_STORE,
 });
 
-export const sortMovies = (movies) => ({
+export const sortMovies = movies => ({
     type: types.SORT_MOVIES,
     payload: movies,
 });
@@ -41,7 +36,7 @@ export const receiveGenres = genres => ({
     payload: genres,
 });
 
-export const receiveCast = (cast) => ({
+export const receiveCast = cast => ({
     type: types.RECEIVE_CAST,
     payload: cast,
 });
@@ -51,12 +46,12 @@ export const receiveDirector = director => ({
     payload: director,
 });
 
-export const receiveMoviesBySameDirector = (movies) => ({
+export const receiveMoviesBySameDirector = movies => ({
     type: types.RECEIVE_MOVIES_BY_DIRECTOR,
     payload: movies,
 });
 
-export const receiveCurrentMovie = (movie) => ({
+export const receiveCurrentMovie = movie => ({
     type: types.RECEIVE_CURRENT_MOVIE,
     payload: movie,
 });

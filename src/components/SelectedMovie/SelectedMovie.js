@@ -70,12 +70,16 @@ const SelectedMovie = ({movie, cast, director}) => {
                     <div className="selectedMovie__summary">
                         {movie.overview}
                     </div>
-                    <div className="selectedMovie__director">
-                        Director: {director}
-                    </div>
-                    <div className="selectedMovie__cast">
-                        Cast: {cast}
-                    </div>
+                    {director &&
+                        <div className="selectedMovie__director">
+                            Director: {director}
+                        </div>
+                    }
+                    {cast &&
+                        <div className="selectedMovie__cast">
+                            Cast: {cast}
+                        </div>
+                    }
                 </div>
 
                 <Link to="/search">

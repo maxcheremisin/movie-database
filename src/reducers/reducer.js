@@ -24,11 +24,6 @@ export default (state = initialState, action) => {
                 ...state,
                 searchType: action.payload,
             };
-        case types.SWITCH_SORTING_TYPE:
-            return {
-                ...state,
-                movies: action.payload,
-            };
         case types.RECEIVE_MOVIES:
             return {
                 ...state,
@@ -71,7 +66,6 @@ export default (state = initialState, action) => {
             };
         case types.RESET_STORE:
             return initialState;
-
         default:
             return state;
     }

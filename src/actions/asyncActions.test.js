@@ -153,5 +153,77 @@ describe('async actions', () => {
                         actions.receiveCurrentMovie(movie),
                     ])
             })
-    })
+    });
+
+    it('fetch cast and director of selected movie', () => {
+        const movie = {
+            id: 68718,
+            title: "Django Unchained",
+            "cast": [
+                {
+                    "character": "Django",
+                    "id": 134,
+                    "name": "Jamie Foxx",
+                },
+                {
+                    "character": "Dr. King Schultz",
+                    "id": 27319,
+                    "name": "Christoph Waltz",
+                    "order": 1,
+                }
+            ],
+            "crew": [
+                {
+                    "department": "Directing",
+                    "id": 138,
+                    "job": "Director",
+                    "name": "Quentin Tarantino",
+                },
+
+                {
+                    "department": "Production",
+                    "id": 1003189,
+                    "job": "Producer",
+                    "name": "Pilar Savone",
+                }
+            ],
+        };
+        const moviesBySameDirector = {
+            "crew": [{
+                "department": "Director",
+                "original_title": "Four Rooms",
+                "job": "Director",
+            }],
+            "id": 138
+        };
+        const movieId = 68718;
+        const directorId = 138;
+
+        fetchMock.get(
+            `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`,
+            movie
+        );
+        fetchMock.get(
+            `https://api.themoviedb.org/3/person/${directorId}/movie_credits?api_key=${API_KEY}`,
+            moviesBySameDirector
+        );
+
+        return store.dispatch(actions.getCastAndDirector(movieId))
+            .then(() => {
+                expect(fetchMock
+                    .called(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`))
+                    .toBe(true);
+                expect(fetchMock
+                    .called(`https://api.themoviedb.org/3/person/${directorId}/movie_credits?api_key=${API_KEY}`))
+                    .toBe(true);
+                expect(store.getActions())
+                    .toEqual([
+                        actions.setLoader('Loading...'),
+                        actions.receiveCast("Jamie Foxx, Christoph Waltz"),
+                        actions.receiveDirector("Quentin Tarantino"),
+                        actions.setLoader(false),
+                    ])
+            })
+    });
+
 });

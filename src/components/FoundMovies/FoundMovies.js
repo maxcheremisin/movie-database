@@ -5,6 +5,10 @@ import './FoundMovies.less';
 
 class FoundMovies extends Component {
 
+    componentWillMount() {
+        this.props.movies.sort(Utils.sortByDate);
+    }
+
     componentDidUpdate() {
         this.props.movies.sort(Utils.sortByDate);
     }

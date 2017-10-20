@@ -22,7 +22,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     onSearchInput: actions.searchInput,
     onSearchFilter: actions.searchFilter,
-    onMoviesSorting: actions.moviesSorting,
     onSetLoader: actions.setLoader,
     onGetMovies: actions.getMovies,
     onGetGenres: actions.getGenres,
