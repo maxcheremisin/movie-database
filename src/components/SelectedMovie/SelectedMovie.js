@@ -1,8 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+
 import './SelectedMovie.less';
 
-const SelectedMovie = ({movie, cast, director}) => {
+const SelectedMovie = ({movie, cast, director, history}) => {
     let color;
 
     if (movie.vote_average >= 8) {
@@ -57,12 +57,12 @@ const SelectedMovie = ({movie, cast, director}) => {
                     </div>
                     <div className="selectedMovie__year-runtime">
                         {movie.release_date &&
-                            <span className="selectedMovie__year-runtime--year">
+                        <span className="selectedMovie__year-runtime--year">
                                 {movie.release_date.split('-')[0]}
                             </span>
                         }
                         {movie.runtime > 0 &&
-                            <span className="selectedMovie__year-runtime--time">
+                        <span className="selectedMovie__year-runtime--time">
                                 {movie.runtime + ' min'}
                             </span>
                         }
@@ -71,30 +71,34 @@ const SelectedMovie = ({movie, cast, director}) => {
                         {movie.overview}
                     </div>
                     {director &&
-                        <div className="selectedMovie__director">
-                            Director: {director}
-                        </div>
+                    <div className="selectedMovie__director">
+                        Director: {director}
+                    </div>
                     }
                     {cast &&
-                        <div className="selectedMovie__cast">
-                            Cast: {cast}
-                        </div>
+                    <div className="selectedMovie__cast">
+                        Cast: {cast}
+                    </div>
                     }
                 </div>
 
-                <Link to="/search">
-                    <button className="selectedMovie__searchButton">
-                        SEARCH
-                    </button>
-                </Link>
-            </div>
-            :
-            <Link to="/search">
-                <button className="selectedMovie__searchButton
-                                    selectedMovie__searchButton--brokenLink">
+                <button className="selectedMovie__searchButton"
+                        onClick={() => {
+                            history.push('/search')
+                        }}
+                >
                     SEARCH
                 </button>
-            </Link>
+            </div>
+            :
+            <button className="selectedMovie__searchButton
+                                    selectedMovie__searchButton--brokenLink"
+                    onClick={() => {
+                        history.push('/search')
+                    }}
+            >
+                SEARCH
+            </button>
     );
 };
 

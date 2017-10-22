@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
 import SearchBar from '../SearchBar/SearchBar';
-import Utils from '../../utils/Utils'
-import SortBar from '../SortBar/SortBar'
+import SortBar from '../SortBar/SortBar';
 import FoundMovies from '../FoundMovies/FoundMovies';
 import Loader from '../Loader/Loader';
+import Utils from '../../utils/Utils';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+configure({ adapter: new Adapter() });
 
 class AppSearch extends Component {
 
@@ -67,7 +71,6 @@ class AppSearch extends Component {
             movies,
             genres,
             loading,
-            searchType,
             searchInput
         } = this.props;
 
@@ -76,7 +79,6 @@ class AppSearch extends Component {
                 <Header
                     headerElement={
                         <SearchBar
-                            activeFilter={searchType.split('=')[0]}
                             value={match.params.query || searchInput}
                             searchByDirector={this.onSearchTypeButton.bind(this, 'director')}
                             searchByTitle={this.onSearchTypeButton.bind(this, 'title')}

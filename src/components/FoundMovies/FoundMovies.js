@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Movie from "../Movie/Movie";
-import Utils from '../../utils/Utils'
+import Utils from '../../utils/Utils';
 import './FoundMovies.less';
 
 class FoundMovies extends Component {

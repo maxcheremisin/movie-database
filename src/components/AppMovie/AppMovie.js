@@ -4,6 +4,10 @@ import SelectedMovie from '../SelectedMovie/SelectedMovie';
 import SortBar from '../SortBar/SortBar';
 import FoundMovies from '../FoundMovies/FoundMovies';
 import Loader from '../Loader/Loader';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+configure({ adapter: new Adapter() });
 
 class AppMovie extends Component {
 
@@ -41,6 +45,7 @@ class AppMovie extends Component {
                         <SelectedMovie movie={selectedMovie}
                                        cast={cast}
                                        director={director}
+                                       history={history}
                         />
                     }
 
