@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './NotFound.less';
 
-const NotFound = () => (
+export const NotFound = () => (
     <div className="notFound page__notFound">
         <div className="notFound__container">
             <div className="notFound__error">
@@ -16,5 +16,3 @@ const NotFound = () => (
         </div>
     </div>
 );
-
-export default NotFound;

@@ -1,12 +1,12 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import AppMovie from '../AppMovie/AppMovie';
-import Header from '../Header/Header';
-import SelectedMovie from '../SelectedMovie/SelectedMovie';
-import SortBar from '../SortBar/SortBar';
-import FoundMovies from '../FoundMovies/FoundMovies';
-import Movie from "../Movie/Movie";
+import {AppMovie} from '../AppMovie/AppMovie';
+import {Header} from '../Header/Header';
+import {SelectedMovie} from '../SelectedMovie/SelectedMovie';
+import {SortBar} from '../SortBar/SortBar';
+import {FoundMovies} from '../FoundMovies/FoundMovies';
+import {Movie} from "../Movie/Movie";
 
 describe('testing component AppMovie', () => {
     const movie = {

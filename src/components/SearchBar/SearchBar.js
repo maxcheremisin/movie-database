@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './SearchBar.less';
 
-class SearchBar extends Component {
+export class SearchBar extends Component {
     render() {
         const {
             value,
@@ -71,5 +71,3 @@ class SearchBar extends Component {
         );
     }
 }
-
-export default SearchBar;

@@ -12,7 +12,7 @@ const initialState = {
     loading: 'No films found',
 };
 
-export default (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case types.ENTER_SEARCH_VALUE:
             return {

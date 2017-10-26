@@ -1,4 +1,4 @@
-import reducer from './reducer';
+import {reducer} from './reducer';
 import * as actions from '../actions/actions';
 
 describe('reducer', () => {

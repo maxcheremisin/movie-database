@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
-import Header from '../Header/Header';
-import SearchBar from '../SearchBar/SearchBar';
-import SortBar from '../SortBar/SortBar';
-import FoundMovies from '../FoundMovies/FoundMovies';
-import Loader from '../Loader/Loader';
-import Utils from '../../utils/Utils';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import {Header} from '../Header/Header';
+import {SearchBar} from '../SearchBar/SearchBar';
+import {SortBar} from '../SortBar/SortBar';
+import {FoundMovies} from '../FoundMovies/FoundMovies';
+import {Loader} from '../Loader/Loader';
+import {Utils}from '../../utils/Utils';
 
-configure({ adapter: new Adapter() });
-
-class AppSearch extends Component {
+export class AppSearch extends Component {
 
     componentWillMount() {
         this.props.onGetGenres();
@@ -109,5 +105,3 @@ class AppSearch extends Component {
         )
     }
 }
-
-export default AppSearch;

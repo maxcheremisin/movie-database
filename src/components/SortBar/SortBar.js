@@ -1,7 +1,7 @@
 import React from 'react';
 import './SortBar.less';
 
-const SortBar = ({movies, director, onSortButton}) => (
+export const SortBar = ({movies, director, onSortButton}) => (
     <div className="sort page__wrapper">
         {movies && movies.length > 0 &&
         <div className="sort__label sort__label--movies">
@@ -35,5 +35,3 @@ const SortBar = ({movies, director, onSortButton}) => (
         }
     </div>
 );
-
-export default SortBar;

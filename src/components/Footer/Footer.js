@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.less';
 
-const Footer = () => (
+export const Footer = () => (
     <div className='footer page__footer'>
         <div className="page__wrapper">
             <a href='https://www.themoviedb.org/'
@@ -11,5 +11,3 @@ const Footer = () => (
         </div>
     </div>
 );
-
-export default Footer;

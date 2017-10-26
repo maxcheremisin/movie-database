@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 import {Provider} from 'react-redux';
 import {ConnectedAppSearch} from '../../containers/container';
 import {ConnectedAppMovie} from '../../containers/container';
-import NotFound from '../NotFound/NotFound';
-import Footer from '../Footer/Footer';
-import store from '../../store/store';
+import {NotFound} from '../NotFound/NotFound';
+import {Footer} from '../Footer/Footer';
+import {store} from '../../store/store';
 
-const App = () => (
+export const App = () => (
     <div>
         <Provider store={store}>
             <Router>
@@ -23,5 +23,3 @@ const App = () => (
         <Footer/>
     </div>
 );
-
-export default App;

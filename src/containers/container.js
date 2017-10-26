@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import * as actions from '../actions/actions';
-import AppSearch from '../components/AppSearch/AppSearch';
-import AppMovie from '../components/AppMovie/AppMovie';
+import {AppSearch} from '../components/AppSearch/AppSearch';
+import {AppMovie} from '../components/AppMovie/AppMovie';
 
 const mapStateToProps = state => ({
     state,

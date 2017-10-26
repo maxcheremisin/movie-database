@@ -1,8 +1,7 @@
 import React from 'react';
-
 import './SelectedMovie.less';
 
-const SelectedMovie = ({movie, cast, director, history}) => {
+export const SelectedMovie = ({movie, cast, director, history}) => {
     let color;
 
     if (movie.vote_average >= 8) {
@@ -101,5 +100,3 @@ const SelectedMovie = ({movie, cast, director, history}) => {
             </button>
     );
 };
-
-export default SelectedMovie;

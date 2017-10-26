@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import Header from '../Header/Header';
-import SelectedMovie from '../SelectedMovie/SelectedMovie';
-import SortBar from '../SortBar/SortBar';
-import FoundMovies from '../FoundMovies/FoundMovies';
-import Loader from '../Loader/Loader';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import {Header} from '../Header/Header';
+import {SelectedMovie} from '../SelectedMovie/SelectedMovie';
+import {SortBar} from '../SortBar/SortBar';
+import {FoundMovies} from '../FoundMovies/FoundMovies';
+import {Loader} from '../Loader/Loader';
 
-configure({ adapter: new Adapter() });
-
-class AppMovie extends Component {
+export class AppMovie extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.match.params.title !== prevProps.match.params.title) {
@@ -66,5 +62,3 @@ class AppMovie extends Component {
         )
     }
 }
-
-export default AppMovie;

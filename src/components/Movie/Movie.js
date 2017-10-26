@@ -1,7 +1,7 @@
 import React from 'react';
 import './Movie.less';
 
-const Movie = ({movie, genres, history}) => {
+export const Movie = ({movie, genres, history}) => {
 
     let category = [];
 
@@ -44,5 +44,3 @@ const Movie = ({movie, genres, history}) => {
         </div>
     )
 };
-
-export default Movie;

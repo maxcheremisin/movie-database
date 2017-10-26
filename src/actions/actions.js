@@ -1,6 +1,5 @@
 import * as types from '../constants/ActionTypes';
-
-const API_KEY = '948c7b577e3d4ab870fc7d3a70aefce4';
+import {API_KEY} from '../config';
 
 export const searchInput = searchValue => ({
     type: types.ENTER_SEARCH_VALUE,

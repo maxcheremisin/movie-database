@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Movie from "../Movie/Movie";
-import Utils from '../../utils/Utils';
+import {Movie} from "../Movie/Movie";
+import {Utils} from '../../utils/Utils';
 import './FoundMovies.less';
 
-class FoundMovies extends Component {
+export class FoundMovies extends Component {
 
     componentWillMount() {
         this.props.movies.sort(Utils.sortByDate);
@@ -36,5 +36,3 @@ class FoundMovies extends Component {
         )
     }
 }
-
-export default FoundMovies;

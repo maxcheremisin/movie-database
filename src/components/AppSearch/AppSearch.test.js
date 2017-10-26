@@ -1,12 +1,12 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
-import AppSearch from '../AppSearch/AppSearch';
-import Header from '../Header/Header';
-import SearchBar from '../SearchBar/SearchBar';
-import SortBar from '../SortBar/SortBar';
-import FoundMovies from '../FoundMovies/FoundMovies';
-import Movie from "../Movie/Movie";
+import {AppSearch} from '../AppSearch/AppSearch';
+import {Header} from '../Header/Header';
+import {SearchBar} from '../SearchBar/SearchBar';
+import {SortBar} from '../SortBar/SortBar';
+import {FoundMovies} from '../FoundMovies/FoundMovies';
+import {Movie} from "../Movie/Movie";
 
 describe('testing component AppSearch', () => {
     const movie = {

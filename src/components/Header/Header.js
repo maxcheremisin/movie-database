@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.less';
 
-const Header = ({headerElement, headerSubElement}) => (
+export const Header = ({headerElement, headerSubElement}) => (
     <div className='header page__header'>
         <div className="header__shade">
             <div className="page__wrapper">
@@ -18,5 +18,3 @@ const Header = ({headerElement, headerSubElement}) => (
         </div>
     </div>
 );
-
-export default Header;
