@@ -1,0 +1,67 @@
+@import './variables';
+
+html, body, h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.page {
+
+  &__wrapper {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__header {
+    min-width: 58rem;
+    margin-bottom: 45px;
+  }
+
+  &__searchBar {
+    margin: 2rem auto 3rem;
+  }
+
+  &__selectedMovie {
+    margin: 2rem auto 3rem;
+  }
+
+  &__main {
+    margin-bottom: 6rem;
+  }
+
+  &__footer {
+    min-width: 58rem;
+  }
+
+  &__loader {
+    margin: 0 auto;
+    min-width: 58rem;
+  }
+
+  &__notFound {
+    margin: 0 auto;
+  }
+
+  &__link {
+    color: @secondColor;
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 4.5rem;
+    font-weight: 600;
+    font-family: "Arial", sans-serif;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.clearfix {
+  display: table;
+}
