@@ -78,7 +78,21 @@ export const getMovies = (type, query) => dispatch => {
         .then(response => response.json())
         .then(response => {
             if (type === 'title') {
-                return response.results;
+                let movies = [];
+
+                for (let i = 1; i <= response.total_pages; i++) {
+                    fetch(`${url}&page=${i}`, {method: 'GET'})
+                        .then(response => response.json())
+                        .then(response => {
+                            response.results.forEach(entry => {
+                                movies.push(entry);
+                            });
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                }
+                return movies;
             } else {
                 let personsIDs = [];
                 let movies = [];

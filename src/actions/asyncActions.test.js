@@ -2,12 +2,11 @@ import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from '../actions/actions';
-import * as types from '../constants/ActionTypes';
+import {API_KEY} from '../config';
 
 const mockStore = configureMockStore([thunk]);
 
 describe('async actions', () => {
-    let API_KEY = '948c7b577e3d4ab870fc7d3a70aefce4';
     let store;
 
     beforeEach(() => store = mockStore());
@@ -16,6 +15,8 @@ describe('async actions', () => {
     it('fetch movies', () => {
 
         const response = {
+            "total_results": 1,
+            "total_pages": 1,
             "results": [
                 {
                     "id": 680,
@@ -28,11 +29,15 @@ describe('async actions', () => {
         const query = 'pulp%20fiction';
 
         fetchMock.get(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`, response);
+        fetchMock.get(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}&page=1`, response);
 
         return store.dispatch(actions.getMovies(type, query))
             .then(() => {
                 expect(fetchMock
                     .called(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`))
+                    .toBe(true);
+                expect(fetchMock
+                    .called(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}&page=1`))
                     .toBe(true);
                 expect(store.getActions())
                     .toEqual([
