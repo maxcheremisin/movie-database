@@ -2,42 +2,53 @@ import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as actions from '../actions/actions';
-import * as types from '../constants/ActionTypes';
+import {API_KEY} from '../config';
 
 const mockStore = configureMockStore([thunk]);
 
 describe('async actions', () => {
-    let API_KEY = '948c7b577e3d4ab870fc7d3a70aefce4';
     let store;
 
     beforeEach(() => store = mockStore());
     afterEach(fetchMock.restore);
 
     it('fetch movies', () => {
+        const type = 'director';
+        const query = 'tarantino';
+        const id = 138;
 
-        const response = {
+        const searchResponse = {
             "results": [
                 {
-                    "id": 680,
-                    "title": "Pulp Fiction",
+                    "id": 138,
+                    "name": "Quentin Tarantino"
                 }
             ]
         };
 
-        const type = 'title';
-        const query = 'pulp%20fiction';
+        const directorResponse = {
+            "crew": [
+                {
+                    "id": 5,
+                    "job": "Director",
+                    "title": "Four Rooms",
+                }
+            ]
+        };
 
-        fetchMock.get(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`, response);
+
+        fetchMock.get(`https://api.themoviedb.org/3/search/person?query=${query}&api_key=${API_KEY}`, searchResponse);
+        fetchMock.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}`, directorResponse);
 
         return store.dispatch(actions.getMovies(type, query))
             .then(() => {
                 expect(fetchMock
-                    .called(`https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}`))
+                    .called(`https://api.themoviedb.org/3/search/person?query=${query}&api_key=${API_KEY}`))
                     .toBe(true);
                 expect(store.getActions())
                     .toEqual([
-                        actions.setLoader('Loading...'),
-                        actions.receiveMovies(response.results),
+                        actions.requestMovies(),
+                        actions.receiveMovies(directorResponse.crew),
                     ])
             })
     });
@@ -65,9 +76,8 @@ describe('async actions', () => {
                     .toBe(true);
                 expect(store.getActions())
                     .toEqual([
-                        actions.setLoader('Loading...'),
+                        actions.requestMoviesBySameDirector(),
                         actions.receiveMoviesBySameDirector(response.crew),
-                        actions.setLoader(false),
                     ])
             })
     });
@@ -135,10 +145,28 @@ describe('async actions', () => {
                 }
             ]
         };
+        const personResponse = {
+            "cast": [
+                {
+                    "id": 5,
+                    "character": "Chester Rush",
+                    "title": "Four Rooms",
+                },
+            ],
+            "crew": [
+                {
+                    "id": 5,
+                    "job": "Director",
+                    "title": "Four Rooms",
+                },
+            ]
+        };
         const id = 68718;
+        const personId = 138;
 
         fetchMock.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`, movie);
         fetchMock.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`, castAndCrew);
+        fetchMock.get(`https://api.themoviedb.org/3/person/${personId}/movie_credits?api_key=${API_KEY}`, personResponse);
 
         return store.dispatch(actions.getCurrentMovie(id))
             .then(() => {
@@ -218,10 +246,9 @@ describe('async actions', () => {
                     .toBe(true);
                 expect(store.getActions())
                     .toEqual([
-                        actions.setLoader('Loading...'),
+                        actions.requestMoviesBySameDirector(),
                         actions.receiveCast("Jamie Foxx, Christoph Waltz"),
                         actions.receiveDirector("Quentin Tarantino"),
-                        actions.setLoader(false),
                     ])
             })
     });

@@ -17,12 +17,13 @@ const mapStateToProps = state => ({
     searchInput: state.searchInput,
     searchType: state.searchType,
     loading: state.loading,
+    loadingMessage: state.loadingMessage,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     onSearchInput: actions.searchInput,
     onSearchFilter: actions.searchFilter,
-    onSetLoader: actions.setLoader,
+    onSetLoadingMessage: actions.setLoadingMessage,
     onGetMovies: actions.getMovies,
     onGetGenres: actions.getGenres,
     onSortMovies: actions.sortMovies,
