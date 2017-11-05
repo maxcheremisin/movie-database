@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Movie} from "../Movie/Movie";
+import {Loader} from '../Loader/Loader';
 import {Utils} from '../../utils/Utils';
 import './FoundMovies.less';
 
@@ -16,12 +17,6 @@ export class FoundMovies extends Component {
         window.addEventListener('scroll', () => {
             this.handleScroll()
         });
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.movies !== this.props.movies) {
-            this.props.movies.sort(Utils.sortByDate);
-        }
     }
 
     handleScroll() {
@@ -47,23 +42,32 @@ export class FoundMovies extends Component {
             history,
             movies,
             genres,
+            loading,
+            loadingMessage,
         } = this.props;
 
         return (
-            <div className="foundMovies page__main">
-                {movies
-                    .slice(0, this.state.loadedCount)
-                    .map((movie, index) => {
-                        return (
-                            <Movie
-                                movie={movie}
-                                genres={genres}
-                                key={index}
-                                history={history}
-                            />
-                        );
-                    })}
-            </div>
+            loading ? (
+                <Loader/>
+            ) :
+                loadingMessage ? (
+                    <Loader loadingMessage={loadingMessage} />
+                ) : (
+                    <div className="foundMovies page__main">
+                        {movies
+                            .slice(0, this.state.loadedCount)
+                            .map((movie, index) => {
+                                return (
+                                    <Movie
+                                        movie={movie}
+                                        genres={genres}
+                                        key={index}
+                                        history={history}
+                                    />
+                                );
+                            })}
+                    </div>
+                )
         )
     }
 }

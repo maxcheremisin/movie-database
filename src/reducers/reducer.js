@@ -9,7 +9,8 @@ const initialState = {
     moviesBySameDirector: [],
     searchInput: '',
     searchType: 'director',
-    loading: 'No films found',
+    loading: false,
+    loadingMessage: 'No films found',
 };
 
 export const reducer = (state = initialState, action) => {
@@ -24,10 +25,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 searchType: action.payload,
             };
+        case types.REQUEST_MOVIES:
+            return {
+                ...state,
+                movies: [],
+                loading: true,
+            };
         case types.RECEIVE_MOVIES:
             return {
                 ...state,
                 movies: action.payload,
+                loading: false,
+                loadingMessage: action.payload.length ? null : 'No films found',
             };
         case types.RECEIVE_GENRES:
             return {
@@ -44,10 +53,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 director: action.payload,
             };
+        case types.REQUEST_MOVIES_BY_DIRECTOR:
+            return {
+                ...state,
+                moviesBySameDirector: [],
+                loading: true,
+            };
         case types.RECEIVE_MOVIES_BY_DIRECTOR:
             return {
                 ...state,
                 moviesBySameDirector: action.payload,
+                loading: false,
+                loadingMessage: action.payload.length ? null : 'There is no more',
             };
         case types.RECEIVE_CURRENT_MOVIE:
             return {
@@ -62,7 +79,7 @@ export const reducer = (state = initialState, action) => {
         case types.EDIT_LOADER_MESSAGE:
             return {
                 ...state,
-                loading: action.payload,
+                loadingMessage: action.payload,
             };
         case types.RESET_STORE:
             return initialState;

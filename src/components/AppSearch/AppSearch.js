@@ -3,15 +3,20 @@ import {Header} from '../Header/Header';
 import {SearchBar} from '../SearchBar/SearchBar';
 import {SortBar} from '../SortBar/SortBar';
 import {FoundMovies} from '../FoundMovies/FoundMovies';
-import {Loader} from '../Loader/Loader';
 import {Utils}from '../../utils/Utils';
 
 export class AppSearch extends Component {
 
     componentWillMount() {
         this.props.onGetGenres();
-        this.props.match.params.query &&
-            this.props.onGetMovies(this.props.searchType, this.props.match.params.query);
+        this.props.match.params.query ?
+            this.props.match.params.query.length > 2 ?
+                this.props.onGetMovies(
+                    this.props.searchType,
+                    this.props.match.params.query
+                ) :
+                this.props.onSetLoadingMessage('Minimum of 3 characters required') :
+            false;
     }
 
     componentWillUnmount() {
@@ -24,10 +29,11 @@ export class AppSearch extends Component {
         let type = this.props.searchType;
         let query = this.props.searchInput || this.props.match.params.query;
 
-        this.props.onSetLoader('Loading...');
-
         if (!query) {
-            this.props.onSetLoader('Please enter search query');
+            this.props.onSetLoadingMessage('Please enter search query');
+            return false;
+        } else if (query.length < 3) {
+            this.props.onSetLoadingMessage('Minimum of 3 characters required');
             return false;
         } else {
             history.location.pathname !== ('/search/' + query) &&
@@ -67,6 +73,7 @@ export class AppSearch extends Component {
             movies,
             genres,
             loading,
+            loadingMessage,
             searchInput
         } = this.props;
 
@@ -92,15 +99,13 @@ export class AppSearch extends Component {
                     }
                 />
 
-                {loading ? (
-                    <Loader loadingMessage={loading}/>
-                ) : (
-                    <FoundMovies
-                        movies={movies}
-                        genres={genres}
-                        history={history}
-                    />
-                )}
+                <FoundMovies
+                    movies={movies}
+                    genres={genres}
+                    history={history}
+                    loading={loading}
+                    loadingMessage={loadingMessage}
+                />
             </div>
         )
     }

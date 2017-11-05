@@ -24,7 +24,7 @@ describe('testing component AppMovie', () => {
 
     const minProps = {
         onGetGenres: () => {},
-        onSetLoader: () => {},
+        onSetLoadingMessage: () => {},
         onGetCurrentMovie: () => {},
         loading: false,
         genres: [{}],

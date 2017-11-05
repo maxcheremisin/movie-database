@@ -12,7 +12,8 @@ describe('reducer', () => {
         moviesBySameDirector: [],
         searchInput: '',
         searchType: 'director',
-        loading: 'No films found',
+        loading: false,
+        loadingMessage: 'No films found',
     };
 
     const state = Object.freeze(initialState);
@@ -31,11 +32,20 @@ describe('reducer', () => {
         expect(newState.searchType).toBe(type);
     });
 
+    it('request movies', () => {
+        const newState = reducer(state, actions.requestMovies());
+
+        expect(newState.loading).toBe(true);
+        expect(newState.movies.length).toBe(0);
+    });
+
     it('receive movies', () => {
         const movies = [{ title: 'test movie' }, { title: 'test movie 2' }];
         const newState = reducer(state, actions.receiveMovies(movies));
 
         expect(newState.movies).toBe(movies);
+        expect(newState.loading).toBe(false);
+        expect(newState.loadingMessage).toBe(null);
     });
 
     it('receive genres', () => {
@@ -59,11 +69,20 @@ describe('reducer', () => {
         expect(newState.director).toBe(director);
     });
 
+    it('request movies by same director', () => {
+        const newState = reducer(state, actions.requestMoviesBySameDirector());
+
+        expect(newState.moviesBySameDirector.length).toBe(0);
+        expect(newState.loading).toBe(true);
+    });
+
     it('receive movies by same director', () => {
         const movies = [{ title: 'test movie' }, { title: 'test movie 2' }];
         const newState = reducer(state, actions.receiveMoviesBySameDirector(movies));
 
         expect(newState.moviesBySameDirector).toBe(movies);
+        expect(newState.loading).toBe(false);
+        expect(newState.loadingMessage).toBe(null);
     });
 
     it('receive selected movie', () => {
@@ -80,11 +99,11 @@ describe('reducer', () => {
         expect(newState.movies).toBe(movies);
     });
 
-    it('set loader state', () => {
-        const message = 'Loading...';
-        const newState = reducer(state, actions.setLoader(message));
+    it('set loading message', () => {
+        const message = 'No films found';
+        const newState = reducer(state, actions.setLoadingMessage(message));
 
-        expect(newState.loading).toBe(message);
+        expect(newState.loadingMessage).toBe(message);
     });
 
     it('reset store', () => {

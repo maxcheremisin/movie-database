@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes';
 import {API_KEY} from '../config';
+import {Utils} from '../utils/Utils';
 
 export const searchInput = searchValue => ({
     type: types.ENTER_SEARCH_VALUE,
@@ -11,7 +12,7 @@ export const searchFilter = type => ({
     payload: type
 });
 
-export const setLoader = message => ({
+export const setLoadingMessage = message => ({
     type: types.EDIT_LOADER_MESSAGE,
     payload: message
 });
@@ -23,6 +24,10 @@ export const resetStore = () => ({
 export const sortMovies = movies => ({
     type: types.SORT_MOVIES,
     payload: movies,
+});
+
+export const requestMovies = () => ({
+    type: types.REQUEST_MOVIES,
 });
 
 export const receiveMovies = movies => ({
@@ -45,6 +50,10 @@ export const receiveDirector = director => ({
     payload: director,
 });
 
+export const requestMoviesBySameDirector = () => ({
+    type: types.REQUEST_MOVIES_BY_DIRECTOR,
+});
+
 export const receiveMoviesBySameDirector = movies => ({
     type: types.RECEIVE_MOVIES_BY_DIRECTOR,
     payload: movies,
@@ -56,8 +65,10 @@ export const receiveCurrentMovie = movie => ({
 });
 
 export const getGenres = () => dispatch => {
-    return fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`,
-        {method: 'GET'})
+    return fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`,
+        {method: 'GET'}
+    )
         .then(response => response.json())
         .then(result => {
             dispatch(receiveGenres(result.genres));
@@ -68,67 +79,85 @@ export const getGenres = () => dispatch => {
 };
 
 export const getMovies = (type, query) => dispatch => {
-    let url;
+    dispatch(requestMovies());
 
-    dispatch(setLoader('Loading...'));
-    (type === 'title') ?
-        url = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}` :
-        url = `https://api.themoviedb.org/3/search/person?query=${query}&api_key=${API_KEY}`;
+    let url = (type === 'title') ?
+        `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${API_KEY}` :
+        `https://api.themoviedb.org/3/search/person?query=${query}&api_key=${API_KEY}`;
+
     return fetch(url, {method: 'GET'})
         .then(response => response.json())
         .then(response => {
             if (type === 'title') {
+                let promises = [];
                 let movies = [];
 
                 for (let i = 1; i <= response.total_pages; i++) {
-                    fetch(`${url}&page=${i}`, {method: 'GET'})
-                        .then(response => response.json())
-                        .then(response => {
-                            response.results.forEach(entry => {
-                                movies.push(entry);
-                            });
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                    promises.push(fetch(`${url}&page=${i}`, {method: 'GET'}));
                 }
-                return movies;
+
+                return Promise
+                    .all(promises)
+                    .then(response => {
+                        let jsonPromises = [];
+
+                        for (let i = response.length - 1; i >= 0; i--) {
+                            jsonPromises.push(response[i].json());
+                        }
+                        return Promise.all(jsonPromises);
+                    })
+                    .then(response => {
+                        for (let i = response.length - 1; i >= 0; i--) {
+                            response[i].results.forEach(entry => {
+                                movies.push(entry);
+                            })
+                        }
+
+                        return Promise.resolve(movies);
+                    });
             } else {
+                let promises = [];
                 let personsIDs = [];
                 let movies = [];
 
                 response.results.forEach(entry => personsIDs.push(entry.id));
                 personsIDs.forEach(id => {
-                    dispatch(setLoader('Loading...'));
-                    fetch(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}`)
-                        .then(response => response.json())
-                        .then(response => {
+                    promises.push(fetch(
+                        `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}`,
+                        {method: 'GET'}
+                    ));
+                });
+
+                return Promise
+                    .all(promises)
+                    .then(response => {
+                        let jsonPromises = [];
+
+                        for (let i = response.length - 1; i >= 0; i--) {
+                            jsonPromises.push(response[i].json());
+                        }
+                        return Promise.all(jsonPromises);
+                    })
+                    .then(response => {
+                        for (let i = response.length - 1; i >= 0; i--) {
                             if (type === 'director') {
-                                response.crew.map((movie) => {
+                                response[i].crew.map((movie) => {
                                     if (movie.job === 'Director') {
-                                        dispatch(setLoader(false));
-                                        return movies.push(movie);
+                                        movies.push(movie);
                                     }
                                 });
                             } else {
-                                response.cast.map((movie) => {
-                                    dispatch(setLoader(false));
-                                    return movies.push(movie);
+                                response[i].cast.map((movie) => {
+                                    movies.push(movie);
                                 });
                             }
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
-                });
-                return movies;
+                        }
+                        return Promise.resolve(movies);
+                    })
             }
         })
         .then(movies => {
-            dispatch(receiveMovies(movies));
-            setTimeout(() => {
-                movies.length ? dispatch(setLoader(false)) : dispatch(setLoader('No films found'));
-            }, 500);
+            dispatch(receiveMovies(movies.sort(Utils.sortByDate)));
         })
         .catch(error => {
             dispatch(receiveMovies([]));
@@ -137,10 +166,13 @@ export const getMovies = (type, query) => dispatch => {
 };
 
 export const getMoviesBySameDirector = (id, selectedId) => dispatch => {
-    dispatch(setLoader('Loading...'));
+    dispatch(requestMoviesBySameDirector());
+
     if (id) {
-        return fetch(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}`,
-            {method: 'GET'})
+        return fetch(
+            `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${API_KEY}`,
+            {method: 'GET'}
+        )
             .then(response => response.json())
             .then(result => {
                 let movies = [];
@@ -152,18 +184,20 @@ export const getMoviesBySameDirector = (id, selectedId) => dispatch => {
                 }
 
                 dispatch(receiveMoviesBySameDirector(movies));
-                dispatch(setLoader(false));
             })
             .catch((error) => {
                 console.log(error);
             })
     } else {
-        dispatch(setLoader(false));
+        dispatch(receiveMoviesBySameDirector([]));
     }
 };
 
 export const getCurrentMovie = id => dispatch => {
-    return fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`, {method: 'GET'})
+    return fetch(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`,
+        {method: 'GET'}
+    )
         .then(response => response.json())
         .then(movie => {
             dispatch(receiveCurrentMovie(movie));
@@ -171,12 +205,14 @@ export const getCurrentMovie = id => dispatch => {
         })
         .catch(error => {
             console.log(error);
-            dispatch(setLoader(error.message));
         });
 };
 
 export const getCastAndDirector = selectedId => dispatch => {
-    return fetch(`https://api.themoviedb.org/3/movie/${selectedId}/credits?api_key=${API_KEY}`, {method: 'GET'})
+    return fetch(
+        `https://api.themoviedb.org/3/movie/${selectedId}/credits?api_key=${API_KEY}`,
+        {method: 'GET'}
+    )
         .then(response => response.json())
         .then(response => {
             let cast = [];
@@ -197,7 +233,6 @@ export const getCastAndDirector = selectedId => dispatch => {
             });
             dispatch(receiveCast(cast.join(', ')));
             dispatch(receiveDirector(directors.join(', ')));
-            dispatch(setLoader(false));
         })
         .catch(error => {
             console.log(error);

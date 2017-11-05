@@ -20,13 +20,13 @@ describe('actions', () => {
         expect(searchFilterAction.payload).toBe(searchType);
     });
 
-    it('set loader state', () => {
+    it('set loading message', () => {
         const message = 'Loading...';
-        const setLoaderAction = actions.setLoader(message);
+        const setLoadingMessageAction = actions.setLoadingMessage(message);
 
-        expect(setLoaderAction.type).toBe(types.EDIT_LOADER_MESSAGE);
-        expect(typeof setLoaderAction.payload).toBe("string");
-        expect(setLoaderAction.payload).toBe(message);
+        expect(setLoadingMessageAction.type).toBe(types.EDIT_LOADER_MESSAGE);
+        expect(typeof setLoadingMessageAction.payload).toBe("string");
+        expect(setLoadingMessageAction.payload).toBe(message);
     });
 
     it('reset store', () => {
@@ -42,6 +42,12 @@ describe('actions', () => {
         expect(sortMoviesAction.type).toBe(types.SORT_MOVIES);
         expect(Array.isArray(sortMoviesAction.payload)).toBe(true);
         expect(sortMoviesAction.payload).toBe(movies);
+    });
+
+    it('request movies', () => {
+        const receiveMoviesAction = actions.requestMovies();
+
+        expect(receiveMoviesAction.type).toBe(types.REQUEST_MOVIES);
     });
 
     it('receive movies', () => {
@@ -78,6 +84,12 @@ describe('actions', () => {
         expect(receiveDirectorAction.type).toBe(types.RECEIVE_DIRECTOR);
         expect(typeof receiveDirectorAction.payload).toBe("string");
         expect(receiveDirectorAction.payload).toBe(director);
+    });
+
+    it('request movies by same director', () => {
+        const receiveMoviesAction = actions.requestMoviesBySameDirector();
+
+        expect(receiveMoviesAction.type).toBe(types.REQUEST_MOVIES_BY_DIRECTOR);
     });
 
     it('receive movies by same director', () => {

@@ -3,30 +3,30 @@ import {Header} from '../Header/Header';
 import {SelectedMovie} from '../SelectedMovie/SelectedMovie';
 import {SortBar} from '../SortBar/SortBar';
 import {FoundMovies} from '../FoundMovies/FoundMovies';
-import {Loader} from '../Loader/Loader';
 
 export class AppMovie extends Component {
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.match.params.title !== prevProps.match.params.title) {
             this.props.onGetCurrentMovie(this.props.match.params.title);
         }
     }
 
     componentWillMount() {
-        this.props.onSetLoader('Loading...');
         this.props.onGetGenres();
         this.props.onGetCurrentMovie(this.props.match.params.title);
+        this.props.onSetLoadingMessage(null);
     }
 
     componentWillUnmount() {
-        this.props.onSetLoader('No films found');
+        this.props.onSetLoadingMessage('No films found');
     }
 
     render() {
         const {
             history,
             loading,
+            loadingMessage,
             genres,
             selectedMovie,
             cast,
@@ -46,18 +46,16 @@ export class AppMovie extends Component {
                     }
 
                     headerSubElement={
-                        <SortBar director={director} />
+                        <SortBar director={director}/>
                     }
                 />
-
-                {loading ? (
-                    <Loader loadingMessage={loading} />
-                ) : (
-                    <FoundMovies
-                        movies={moviesBySameDirector}
-                        genres={genres}
-                        history={history} />
-                )}
+                <FoundMovies
+                    movies={moviesBySameDirector}
+                    genres={genres}
+                    history={history}
+                    loading={loading}
+                    loadingMessage={loadingMessage}
+                />
             </div>
         )
     }
